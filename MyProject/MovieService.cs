@@ -12,5 +12,18 @@ namespace MyProject
         private static string filePath = Path.Combine(FileSystem.AppDataDirectory, "movies.json");
 
         private static string url = "https://raw.githubusercontent.com/DonH-ITS/jsonfiles/main/moviesemoji.json";
+
+        // Load movies (download if needed)
+        public static async Task<List<Movie>> LoadMoviesAsync()
+        {
+            // If local file doesn't exist, download it
+            if (!File.Exists(filePath))
+            {
+                var json = await new HttpClient().GetStringAsync(url);
+                await File.WriteAllTextAsync(filePath, json);
+            }
+
+
+        }
     }
 }
