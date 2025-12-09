@@ -31,5 +31,8 @@ namespace MyProject
 
         // When the movie was last viewed 
         public DateTime? ViewedAt { get; set; }
+
+        // Helper property to display genres as a single string in the UI
+        public string GenresString => Genres != null ? string.Join(", ", Genres) : "";
     }
 }
