@@ -10,5 +10,7 @@ namespace MyProject
     public static class MovieService
     {
         private static string filePath = Path.Combine(FileSystem.AppDataDirectory, "movies.json");
+
+        private static string url = "https://raw.githubusercontent.com/DonH-ITS/jsonfiles/main/moviesemoji.json";
     }
 }
