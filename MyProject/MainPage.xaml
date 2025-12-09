@@ -8,7 +8,7 @@
 
     <VerticalStackLayout Padding="10" Spacing="8">
 
-        <CollectionView x:Name="MoviesCollectionView" ItemsSource="{Binding Movies}">
+        <CollectionView x:Name="MoviesCollectionView">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="local:Movie">
                     <Frame Padding="10" CornerRadius="8" HasShadow="True">
