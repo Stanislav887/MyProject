@@ -23,6 +23,11 @@ namespace MyProject
                 await File.WriteAllTextAsync(filePath, json);
             }
 
+            // Read local JSON and convert to list of Movie objects
+            var localJson = await File.ReadAllTextAsync(filePath);
+
+            var movies = JsonSerializer.Deserialize<List<Movie>>(localJson);
+            return movies ?? new List<Movie>();
 
         }
     }
