@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
+using System.Net.Http;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json;
+using System.IO;
+using Microsoft.Maui.Storage;
 
 namespace MyProject
 {
@@ -60,6 +59,14 @@ namespace MyProject
                 {
                     Console.WriteLine($"Error downloading JSON: {ex.Message}");
                 }
+            }
+
+            // Deserialize and populate list
+            if (!string.IsNullOrEmpty(json))
+            {
+                var movies = JsonSerializer.Deserialize<List<Movie>>(json);
+                Movies = movies != null ? new ObservableCollection<Movie>(movies) : new ObservableCollection<Movie>();
+                OnPropertyChanged(nameof(Movies));
             }
 
         }
