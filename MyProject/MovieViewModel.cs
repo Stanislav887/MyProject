@@ -11,6 +11,9 @@ namespace MyProject
 {
     internal class MovieViewModel : INotifyPropertyChanged
     {
+        private string cacheFileName = "movies.json";
+        private Movie _selectedMovie;
+       
         public ObservableCollection<Movie> Movies { get; set; } = new();
 
         public Movie SelectedMovie
@@ -26,9 +29,19 @@ namespace MyProject
             }
         }
 
+        public MovieViewModel()
+        {
+            LoadMoviesAsync();
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        private async void LoadMoviesAsync()
+        {
+
+        }
     }
 }
