@@ -1,14 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="MyProject.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:MyProject"
-    Title="MyProject">
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:pages="clr-namespace:MyProject"
+       x:Class="MyProject.AppShell">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <ShellContent Title="Movies" ContentTemplate="{DataTemplate pages:MainPage}" />
 
 </Shell>
+
