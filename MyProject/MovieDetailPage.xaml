@@ -8,6 +8,6 @@
         <Label Text="{Binding year}" />
         <Label Text="{Binding director}" />
         <Label Text="{Binding rating}" />
-        <Label Text="{Binding genre}" />
+        <Label Text="{Binding genreString}" />
     </StackLayout>
 </ContentPage>

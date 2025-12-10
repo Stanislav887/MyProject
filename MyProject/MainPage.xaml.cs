@@ -1,4 +1,8 @@
-﻿namespace MyProject
+﻿using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Maui.Controls;
+
+namespace MyProject
 {
     public partial class MainPage : ContentPage
     {
@@ -11,6 +15,20 @@
             BindingContext = viewModel;
         }
 
+        private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.CurrentSelection.FirstOrDefault() is Movie selectedMovie)
+            {
+                var parameters = new Dictionary<string, object>
+                {
+                    { "Movie", selectedMovie }
+                };
+
+                await Shell.Current.GoToAsync(nameof(MovieDetailPage), parameters);
+
+                ((CollectionView)sender).SelectedItem = null;
+            }
+        }
 
     }
 }
