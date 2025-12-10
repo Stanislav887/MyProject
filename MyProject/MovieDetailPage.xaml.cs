@@ -1,9 +1,25 @@
-namespace MyProject;
+using Microsoft.Maui.Controls;
 
-public partial class MovieDetailPage : ContentPage
+namespace MyProject
 {
-	public MovieDetailPage()
-	{
-		InitializeComponent();
-	}
+    [QueryProperty(nameof(Movie), "Movie")]
+    public partial class MovieDetailPage : ContentPage
+    {
+        private Movie _movie;
+
+        public Movie Movie
+        {
+            get => _movie;
+            set
+            {
+                _movie = value;
+                BindingContext = _movie;
+            }
+        }
+
+        public MovieDetailPage()
+        {
+            InitializeComponent();
+        }
+    }
 }
