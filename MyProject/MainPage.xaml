@@ -1,33 +1,31 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:MyProject"
-    x:Class="MyProject.MainPage"
-    Title="Movie Explorer">
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MyProject"
+             x:Class="MyProject.MainPage">
 
-    <VerticalStackLayout Padding="10" Spacing="8">
+    <ContentPage.BindingContext>
+        <vm:MovieViewModel />
+    </ContentPage.BindingContext>
 
-        <CollectionView x:Name="MoviesCollectionView">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="local:Movie">
-                    <Frame Padding="10" CornerRadius="8" HasShadow="True">
-                        <HorizontalStackLayout Spacing="10">
-                            <!-- Emoji -->
-                            <Label Text="{Binding Emoji}" FontSize="30" VerticalOptions="Center" />
+    <CollectionView x:Name="MoviesCollectionView"
+                    ItemsSource="{Binding Movies}"
+                    SelectionMode="Single"
+                    SelectionChanged="CollectionView_SelectionChanged">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <StackLayout Orientation="Horizontal" Padding="10">
+                    <Label Text="{Binding emoji}" FontSize="30" />
+                    <StackLayout Orientation="Vertical" Padding="10,0">
+                        <Label Text="{Binding title}" FontAttributes="Bold" />
+                        <Label Text="{Binding year}" FontSize="12" />
+                        <Label Text="{Binding director}" FontSize="12" />
+                        <Label Text="{Binding rating}" FontSize="12" />
+                    </StackLayout>
+                </StackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 
-                            <!-- Movie info -->
-                            <VerticalStackLayout>
-                                <Label Text="{Binding Title}" FontAttributes="Bold" />
-                                <Label Text="{Binding Year}" />
-                                <Label Text="{Binding GenresString}" />
-                            </VerticalStackLayout>
-                        </HorizontalStackLayout>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-
-    </VerticalStackLayout>
 </ContentPage>
+
 
