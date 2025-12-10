@@ -8,31 +8,11 @@ namespace MyProject
 {
     public class Movie
     {
-        // The movie's title 
-        public string Title { get; set; }
-
-        // Release year of the movie 
-        public int Year { get; set; }
-
-        // Array of genres 
-        public string[] Genres { get; set; }
-
-        // Director's name 
-        public string Director { get; set; }
-
-        // IMDB rating as a number 
-        public double IMDBRating { get; set; }
-
-        // Emoji representing the primary genre 
-        public string Emoji { get; set; }
-
-        // Whether the user has marked this movie as a favourite
-        public bool IsFavourite { get; set; }
-
-        // When the movie was last viewed 
-        public DateTime? ViewedAt { get; set; }
-
-        // Helper property to display genres as a single string in the UI
-        public string GenresString => Genres != null ? string.Join(", ", Genres) : "";
+        public string title { get; set; }
+        public int year { get; set; }
+        public List<string> genre { get; set; }
+        public string director { get; set; }
+        public double rating { get; set; }
+        public string emoji { get; set; }
     }
 }
