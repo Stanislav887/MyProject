@@ -41,6 +41,26 @@ namespace MyProject
 
         private async void LoadMoviesAsync()
         {
+            string json = string.Empty;
+            string localPath = Path.Combine(FileSystem.AppDataDirectory, cacheFileName);
+
+            if (File.Exists(localPath))
+            {
+                json = await File.ReadAllTextAsync(localPath);
+            }
+            else
+            {
+                try
+                {
+                    using HttpClient client = new();
+                    json = await client.GetStringAsync("https://raw.githubusercontent.com/DonH-ITS/jsonfiles/main/moviesemoji.json");
+                    await File.WriteAllTextAsync(localPath, json);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error downloading JSON: {ex.Message}");
+                }
+            }
 
         }
     }
