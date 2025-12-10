@@ -2,11 +2,13 @@
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        private MovieViewModel viewModel;
 
         public MainPage()
         {
             InitializeComponent();
+            viewModel = new MovieViewModel();
+            BindingContext = viewModel;
         }
 
 
