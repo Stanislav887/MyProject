@@ -13,6 +13,19 @@ namespace MyProject
     {
         public ObservableCollection<Movie> Movies { get; set; } = new();
 
+        public Movie SelectedMovie
+        {
+            get => _selectedMovie;
+            set
+            {
+                if (_selectedMovie != value)
+                {
+                    _selectedMovie = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
