@@ -14,5 +14,7 @@ namespace MyProject
         public string director { get; set; }
         public double rating { get; set; }
         public string emoji { get; set; }
+
+        public string genreString => genre != null ? string.Join(", ", genre) : "";
     }
 }
