@@ -7,16 +7,22 @@
         <vm:MovieViewModel />
     </ContentPage.BindingContext>
 
-    <StackLayout Padding="10" Spacing="10">
+    <Grid Padding="10" RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <SearchBar Placeholder="Search movies..."
-                   x:Name="MovieSearchBar"
-                   TextChanged="SearchBar_TextChanged" />
+        <SearchBar x:Name="MovieSearchBar"
+                   Placeholder="Search movies..."
+                   TextChanged="SearchBar_TextChanged"
+                   Grid.Row="0"/>
 
         <CollectionView x:Name="MoviesCollectionView"
                     ItemsSource="{Binding Movies}"
                     SelectionMode="Single"
-                    SelectionChanged="CollectionView_SelectionChanged">
+                    SelectionChanged="CollectionView_SelectionChanged"
+                    Grid.Row="1">
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <StackLayout Orientation="Horizontal" Padding="10">
@@ -32,7 +38,7 @@
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>
-        </StackLayout>
+    </Grid>
 
 </ContentPage>
 
