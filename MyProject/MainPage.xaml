@@ -20,6 +20,7 @@
                         <Label Text="{Binding year}" FontSize="12" />
                         <Label Text="{Binding director}" FontSize="12" />
                         <Label Text="{Binding rating}" FontSize="12" />
+                        <Label Text="{Binding genreString}" FontSize="12" />
                     </StackLayout>
                 </StackLayout>
             </DataTemplate>
