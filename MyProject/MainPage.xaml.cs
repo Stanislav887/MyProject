@@ -25,6 +25,16 @@ namespace MyProject
                 MoviesCollectionView.ItemsSource = viewModel.Movies;
                 return;
             }
+
+            // Filter movies by title, director, year, or genreString
+            var filtered = viewModel.Movies.Where(movie =>
+                movie.title.ToLower().Contains(searchText) ||
+                movie.director.ToLower().Contains(searchText) ||
+                movie.year.ToString().Contains(searchText) ||
+                movie.genreString.ToLower().Contains(searchText)
+            ).ToList();
+
+            MoviesCollectionView.ItemsSource = filtered;
         }
 
 
