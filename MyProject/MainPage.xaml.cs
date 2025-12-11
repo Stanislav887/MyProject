@@ -17,7 +17,14 @@ namespace MyProject
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+            string searchText = e.NewTextValue?.ToLower() ?? "";
+
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                // Show all movies if search text is empty
+                MoviesCollectionView.ItemsSource = viewModel.Movies;
+                return;
+            }
         }
 
 
