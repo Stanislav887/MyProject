@@ -15,6 +15,12 @@ namespace MyProject
             BindingContext = viewModel;
         }
 
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
+
+
         private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.CurrentSelection.FirstOrDefault() is Movie selectedMovie)
