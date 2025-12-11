@@ -7,7 +7,13 @@
         <vm:MovieViewModel />
     </ContentPage.BindingContext>
 
-    <CollectionView x:Name="MoviesCollectionView"
+    <StackLayout Padding="10" Spacing="10">
+
+        <SearchBar Placeholder="Search movies..."
+                   x:Name="MovieSearchBar"
+                   TextChanged="SearchBar_TextChanged" />
+
+        <CollectionView x:Name="MoviesCollectionView"
                     ItemsSource="{Binding Movies}"
                     SelectionMode="Single"
                     SelectionChanged="CollectionView_SelectionChanged">
@@ -26,6 +32,7 @@
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>
+        </StackLayout>
 
 </ContentPage>
 
