@@ -14,6 +14,8 @@ namespace MyProject
         private Movie _selectedMovie;
        
         public ObservableCollection<Movie> Movies { get; set; } = new();
+        public ObservableCollection<Movie> AllMovies { get; set; } = new();
+        public ObservableCollection<Movie> FilteredMovies { get; set; } = new();
 
         public Movie SelectedMovie
         {
@@ -65,8 +67,15 @@ namespace MyProject
             if (!string.IsNullOrEmpty(json))
             {
                 var movies = JsonSerializer.Deserialize<List<Movie>>(json);
-                Movies = movies != null ? new ObservableCollection<Movie>(movies) : new ObservableCollection<Movie>();
-                OnPropertyChanged(nameof(Movies));
+
+                AllMovies = movies != null
+                    ? new ObservableCollection<Movie>(movies)
+                    : new ObservableCollection<Movie>();
+
+                FilteredMovies = new ObservableCollection<Movie>(AllMovies);
+
+                OnPropertyChanged(nameof(AllMovies));
+                OnPropertyChanged(nameof(FilteredMovies));
             }
 
         }
