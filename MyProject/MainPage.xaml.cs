@@ -53,5 +53,13 @@ namespace MyProject
             }
         }
 
+        private void SortPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (SortPicker.SelectedItem is string sortOption)
+            {
+                viewModel.SortMovies(sortOption);
+            }
+        }
+
     }
 }
