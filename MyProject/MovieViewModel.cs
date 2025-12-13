@@ -70,5 +70,29 @@ namespace MyProject
             }
 
         }
+
+        public void SortMovies(string sortOption)
+        {
+            IEnumerable<Movie> sortedMovies = Movies;
+
+            switch (sortOption)
+            {
+                case "Rating":
+                    sortedMovies = Movies.OrderByDescending(m => m.rating);
+                    break;
+
+                case "Year":
+                    sortedMovies = Movies.OrderByDescending(m => m.year);
+                    break;
+
+                case "Title":
+                    sortedMovies = Movies.OrderBy(m => m.title);
+                    break;
+            }
+
+            Movies = new ObservableCollection<Movie>(sortedMovies);
+            OnPropertyChanged(nameof(Movies));
+        }
+
     }
 }
