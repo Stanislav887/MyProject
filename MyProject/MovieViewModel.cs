@@ -82,25 +82,25 @@ namespace MyProject
 
         public void SortMovies(string sortOption)
         {
-            IEnumerable<Movie> sortedMovies = Movies;
+            IEnumerable<Movie> sorted = FilteredMovies;
 
             switch (sortOption)
             {
                 case "Rating":
-                    sortedMovies = Movies.OrderByDescending(m => m.rating);
+                    sorted = sorted.OrderByDescending(m => m.rating);
                     break;
 
                 case "Year":
-                    sortedMovies = Movies.OrderByDescending(m => m.year);
+                    sorted = sorted.OrderByDescending(m => m.year);
                     break;
 
                 case "Title":
-                    sortedMovies = Movies.OrderBy(m => m.title);
+                    sorted = sorted.OrderBy(m => m.title);
                     break;
             }
 
-            Movies = new ObservableCollection<Movie>(sortedMovies);
-            OnPropertyChanged(nameof(Movies));
+            FilteredMovies = new ObservableCollection<Movie>(sorted);
+            OnPropertyChanged(nameof(FilteredMovies));
         }
 
     }
