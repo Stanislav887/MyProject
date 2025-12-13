@@ -10,6 +10,7 @@
     <Grid Padding="10" RowSpacing="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -18,11 +19,24 @@
                    TextChanged="SearchBar_TextChanged"
                    Grid.Row="0"/>
 
+        <Picker x:Name="SortPicker"
+                Title="Sort by"
+                SelectedIndexChanged="SortPicker_SelectedIndexChanged"
+                Grid.Row="1">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Rating</x:String>
+                    <x:String>Year</x:String>
+                    <x:String>Title</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
         <CollectionView x:Name="MoviesCollectionView"
                     ItemsSource="{Binding Movies}"
                     SelectionMode="Single"
                     SelectionChanged="CollectionView_SelectionChanged"
-                    Grid.Row="1">
+                    Grid.Row="2">
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <StackLayout Orientation="Horizontal" Padding="10">
