@@ -17,6 +17,9 @@ namespace MyProject
         public ObservableCollection<Movie> AllMovies { get; set; } = new();
         public ObservableCollection<Movie> FilteredMovies { get; set; } = new();
 
+        public string CurrentSortOption { get; set; }
+        public bool SortAscending { get; set; }
+
         public Movie SelectedMovie
         {
             get => _selectedMovie;
@@ -32,6 +35,9 @@ namespace MyProject
 
         public MovieViewModel()
         {
+            CurrentSortOption = Preferences.Default.Get("SortOption", "Rating");
+            SortAscending = Preferences.Default.Get("SortAscending", false);
+
             LoadMoviesAsync();
         }
 
@@ -74,6 +80,8 @@ namespace MyProject
 
                 FilteredMovies = new ObservableCollection<Movie>(AllMovies);
 
+                SortMovies(CurrentSortOption);
+
                 OnPropertyChanged(nameof(AllMovies));
                 OnPropertyChanged(nameof(FilteredMovies));
             }
@@ -82,25 +90,41 @@ namespace MyProject
 
         public void SortMovies(string sortOption)
         {
+            CurrentSortOption = sortOption;
             IEnumerable<Movie> sorted = FilteredMovies;
 
-            switch (sortOption)
+            switch (CurrentSortOption)
             {
                 case "Rating":
-                    sorted = sorted.OrderByDescending(m => m.rating);
+                    sorted = SortAscending
+                        ? sorted.OrderBy(m => m.rating)
+                        : sorted.OrderByDescending(m => m.rating);
                     break;
 
                 case "Year":
-                    sorted = sorted.OrderByDescending(m => m.year);
+                    sorted = SortAscending
+                        ? sorted.OrderBy(m => m.year)
+                        : sorted.OrderByDescending(m => m.year);
                     break;
 
                 case "Title":
-                    sorted = sorted.OrderBy(m => m.title);
+                    sorted = SortAscending
+                        ? sorted.OrderBy(m => m.title)
+                        : sorted.OrderByDescending(m => m.title);
                     break;
             }
+            
+            Preferences.Default.Set("SortOption", CurrentSortOption);
+            Preferences.Default.Set("SortAscending", SortAscending);
 
             FilteredMovies = new ObservableCollection<Movie>(sorted);
             OnPropertyChanged(nameof(FilteredMovies));
+        }
+
+        public void ToggleSortOrder()
+        {
+            SortAscending = !SortAscending;
+            SortMovies(CurrentSortOption);
         }
 
     }
