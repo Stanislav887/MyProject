@@ -13,7 +13,6 @@ namespace MyProject
         private string cacheFileName = "movies.json";
         private Movie _selectedMovie;
        
-        public ObservableCollection<Movie> Movies { get; set; } = new();
         private List<Movie> AllMovies = new();
         public ObservableCollection<Movie> FilteredMovies { get; set; } = new();
 
