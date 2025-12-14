@@ -74,15 +74,12 @@ namespace MyProject
             {
                 var movies = JsonSerializer.Deserialize<List<Movie>>(json);
 
-                AllMovies = movies != null
-                    ? new ObservableCollection<Movie>(movies)
-                    : new ObservableCollection<Movie>();
-
+                AllMovies = movies ?? new List<Movie>();
                 FilteredMovies = new ObservableCollection<Movie>(AllMovies);
 
+                // Apply persisted sort
                 SortMovies(CurrentSortOption);
 
-                OnPropertyChanged(nameof(AllMovies));
                 OnPropertyChanged(nameof(FilteredMovies));
             }
 
