@@ -88,6 +88,27 @@ namespace MyProject
 
         }
 
+        public void ApplySearch(string searchText)
+        {
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                FilteredMovies = new ObservableCollection<Movie>(AllMovies);
+            }
+            else
+            {
+                FilteredMovies = new ObservableCollection<Movie>(
+                    AllMovies.Where(movie =>
+                        movie.title.ToLower().Contains(searchText.ToLower()) ||
+                        movie.director.ToLower().Contains(searchText.ToLower()) ||
+                        movie.year.ToString().Contains(searchText) ||
+                        movie.genreString.ToLower().Contains(searchText.ToLower())
+                    )
+                );
+            }
+            SortMovies(CurrentSortOption);
+            OnPropertyChanged(nameof(FilteredMovies));
+        }
+
         public void SortMovies(string sortOption)
         {
             CurrentSortOption = sortOption;
