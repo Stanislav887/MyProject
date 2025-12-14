@@ -19,24 +19,13 @@ namespace MyProject
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string searchText = e.NewTextValue?.ToLower() ?? "";
+            string searchText = e.NewTextValue ?? "";
 
-            if (string.IsNullOrWhiteSpace(searchText))
-            {
-                // Show all movies if search text is empty
-                MoviesCollectionView.ItemsSource = viewModel.FilteredMovies;
-                return;
-            }
+            // Apply search using ViewModel method
+            viewModel.ApplySearch(searchText);
 
-            // Filter movies by title, director, year, or genreString
-            var filtered = viewModel.Movies.Where(movie =>
-                movie.title.ToLower().Contains(searchText) ||
-                movie.director.ToLower().Contains(searchText) ||
-                movie.year.ToString().Contains(searchText) ||
-                movie.genreString.ToLower().Contains(searchText)
-            ).ToList();
-
-            MoviesCollectionView.ItemsSource = filtered;
+            // Refresh CollectionView ItemsSource
+            MoviesCollectionView.ItemsSource = viewModel.FilteredMovies;
         }
 
 
