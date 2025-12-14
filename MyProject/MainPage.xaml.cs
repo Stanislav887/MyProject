@@ -22,7 +22,7 @@ namespace MyProject
             if (string.IsNullOrWhiteSpace(searchText))
             {
                 // Show all movies if search text is empty
-                MoviesCollectionView.ItemsSource = viewModel.Movies;
+                MoviesCollectionView.ItemsSource = viewModel.FilteredMovies;
                 return;
             }
 
