@@ -13,6 +13,8 @@ namespace MyProject
             InitializeComponent();
             viewModel = new MovieViewModel();
             BindingContext = viewModel;
+
+            MoviesCollectionView.ItemsSource = viewModel.FilteredMovies;
         }
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
