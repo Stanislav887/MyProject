@@ -71,9 +71,8 @@ namespace MyProject
             // Deserialize and populate list
             if (!string.IsNullOrEmpty(json))
             {
-                var movies = JsonSerializer.Deserialize<List<Movie>>(json);
-
-                AllMovies = movies ?? new List<Movie>();
+                var movies = JsonSerializer.Deserialize<List<Movie>>(json) ?? new List<Movie>();
+                AllMovies = movies;
                 FilteredMovies = new ObservableCollection<Movie>(AllMovies);
 
                 // Apply persisted sort
