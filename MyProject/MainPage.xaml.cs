@@ -49,6 +49,9 @@ namespace MyProject
             if (SortPicker.SelectedItem is string sortOption)
             {
                 viewModel.SortMovies(sortOption);
+
+                // Refresh CollectionView
+                MoviesCollectionView.ItemsSource = viewModel.FilteredMovies;
             }
         }
 
