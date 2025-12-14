@@ -55,5 +55,15 @@ namespace MyProject
             }
         }
 
+        private void SortOrderButton_Clicked(object sender, EventArgs e)
+        {
+            // Toggle sort order in ViewModel
+            viewModel.ToggleSortOrder();
+
+            // Refresh CollectionView
+            MoviesCollectionView.ItemsSource = viewModel.FilteredMovies;
+        }
+
+
     }
 }
