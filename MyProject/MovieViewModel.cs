@@ -14,7 +14,7 @@ namespace MyProject
         private Movie _selectedMovie;
        
         public ObservableCollection<Movie> Movies { get; set; } = new();
-        public ObservableCollection<Movie> AllMovies { get; set; } = new();
+        private List<Movie> AllMovies = new();
         public ObservableCollection<Movie> FilteredMovies { get; set; } = new();
 
         public string CurrentSortOption { get; set; }
