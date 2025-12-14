@@ -13,8 +13,6 @@ namespace MyProject
             InitializeComponent();
             viewModel = new MovieViewModel();
             BindingContext = viewModel;
-
-            MoviesCollectionView.ItemsSource = viewModel.FilteredMovies;
         }
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
@@ -24,8 +22,6 @@ namespace MyProject
             // Apply search using ViewModel method
             viewModel.ApplySearch(searchText);
 
-            // Refresh CollectionView ItemsSource
-            MoviesCollectionView.ItemsSource = viewModel.FilteredMovies;
         }
 
 
@@ -50,8 +46,6 @@ namespace MyProject
             {
                 viewModel.SortMovies(sortOption);
 
-                // Refresh CollectionView
-                MoviesCollectionView.ItemsSource = viewModel.FilteredMovies;
             }
         }
 
@@ -60,8 +54,6 @@ namespace MyProject
             // Toggle sort order in ViewModel
             viewModel.ToggleSortOrder();
 
-            // Refresh CollectionView
-            MoviesCollectionView.ItemsSource = viewModel.FilteredMovies;
         }
 
 

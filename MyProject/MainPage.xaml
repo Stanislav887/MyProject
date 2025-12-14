@@ -45,7 +45,7 @@
         </Grid>
 
         <CollectionView x:Name="MoviesCollectionView"
-                    ItemsSource="{Binding Movies}"
+                    ItemsSource="{Binding FilteredMovies}"
                     SelectionMode="Single"
                     SelectionChanged="CollectionView_SelectionChanged"
                     Grid.Row="2">
