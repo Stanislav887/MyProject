@@ -19,7 +19,13 @@
                    TextChanged="SearchBar_TextChanged"
                    Grid.Row="0"/>
 
-        <Picker x:Name="SortPicker"
+        <Grid Grid.Row="1" ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Picker x:Name="SortPicker"
                 Title="Sort by"
                 SelectedIndexChanged="SortPicker_SelectedIndexChanged"
                 Grid.Row="1">
@@ -31,6 +37,12 @@
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
+
+            <Button Text="⇅"
+                    Clicked="SortOrderButton_Clicked"
+                    Grid.Column="1"
+                    HorizontalOptions="End"/>
+        </Grid>
 
         <CollectionView x:Name="MoviesCollectionView"
                     ItemsSource="{Binding Movies}"
