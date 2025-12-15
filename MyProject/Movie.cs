@@ -16,5 +16,7 @@ namespace MyProject
         public string emoji { get; set; }
 
         public string genreString => genre != null ? string.Join(", ", genre) : "";
+
+        public bool IsFavorite { get; set; } = false;
     }
 }
