@@ -53,17 +53,14 @@
             <DataTemplate>
                 <StackLayout Orientation="Horizontal" Padding="10">
                     <Label Text="{Binding emoji}" FontSize="30" />
-                    <StackLayout Orientation="Vertical" Padding="10,0">
-                        <Label Text="{Binding title}" FontAttributes="Bold" />
-                        <Label Text="{Binding year}" FontSize="12" />
-                        <Label Text="{Binding director}" FontSize="12" />
-                        <Label Text="{Binding rating}" FontSize="12" />
-                        <Label Text="{Binding genreString}" FontSize="12" />
+                        <StackLayout Orientation="Vertical" Padding="10,0">
+                            <Label Text="{Binding title}" FontAttributes="Bold" />
+                            <Label Text="{Binding year}" FontSize="12" />
+                            <Label Text="{Binding director}" FontSize="12" />
+                            <Label Text="{Binding rating}" FontSize="12" />
+                            <Label Text="{Binding genreString}" FontSize="12" />
+                        </StackLayout>
                     </StackLayout>
-                        <Button Text="{Binding IsFavorite, Converter={StaticResource BoolToStarConverter}}"
-                                Clicked="FavoriteButton_Clicked"
-                                HorizontalOptions="End"/>
-                </StackLayout>
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>

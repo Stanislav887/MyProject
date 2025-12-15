@@ -152,11 +152,7 @@ namespace MyProject
             SortMovies(CurrentSortOption);
         }
 
-        public void ToggleFavorite(Movie movie)
-        {
-            movie.IsFavorite = !movie.IsFavorite;
-            OnPropertyChanged(nameof(FilteredMovies));
-        }
+
 
 
     }

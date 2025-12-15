@@ -56,14 +56,7 @@ namespace MyProject
 
         }
 
-        private void FavoriteButton_Clicked(object sender, EventArgs e)
-        {
-            if (sender is Button btn && btn.BindingContext is Movie movie)
-            {
-                movie.IsFavorite = !movie.IsFavorite;
 
-            }
-        }
 
     }
 }

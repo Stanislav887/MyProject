@@ -17,6 +17,5 @@ namespace MyProject
 
         public string genreString => genre != null ? string.Join(", ", genre) : "";
 
-        public bool IsFavorite { get; set; } = false;
     }
 }
