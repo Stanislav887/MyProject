@@ -38,7 +38,7 @@
             </Picker.ItemsSource>
         </Picker>
 
-            <Button Text="⇅"
+            <Button Text="{Binding SortOrderText}"
                     Clicked="SortOrderButton_Clicked"
                     Grid.Column="1"
                     HorizontalOptions="End"/>
