@@ -19,6 +19,11 @@ namespace MyProject
         public string CurrentSortOption { get; set; }
         public bool SortAscending { get; set; }
 
+        public string SortOrderText
+        {
+            get => SortAscending ? "🔼 Ascending" : "🔽 Descending";
+        }
+
         public Movie SelectedMovie
         {
             get => _selectedMovie;
