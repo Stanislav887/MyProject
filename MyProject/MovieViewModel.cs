@@ -146,11 +146,18 @@ namespace MyProject
         {
             SortAscending = !SortAscending;
 
-            // Notify UI that button text changed
+
             OnPropertyChanged(nameof(SortOrderText));
 
             SortMovies(CurrentSortOption);
         }
+
+        public void ToggleFavorite(Movie movie)
+        {
+            movie.IsFavorite = !movie.IsFavorite;
+            OnPropertyChanged(nameof(FilteredMovies));
+        }
+
 
     }
 }

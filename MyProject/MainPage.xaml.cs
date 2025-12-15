@@ -61,7 +61,7 @@ namespace MyProject
             if (sender is Button btn && btn.BindingContext is Movie movie)
             {
                 movie.IsFavorite = !movie.IsFavorite;
-                viewModel.OnPropertyChanged(nameof(viewModel.FilteredMovies));
+
             }
         }
 
