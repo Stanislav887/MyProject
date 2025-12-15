@@ -145,6 +145,10 @@ namespace MyProject
         public void ToggleSortOrder()
         {
             SortAscending = !SortAscending;
+
+            // Notify UI that button text changed
+            OnPropertyChanged(nameof(SortOrderText));
+
             SortMovies(CurrentSortOption);
         }
 
