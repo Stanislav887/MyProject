@@ -1,7 +1,14 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:MyProject"
+             xmlns:local="clr-namespace:MyProject"
              x:Class="MyProject.MainPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:BoolToStarConverter x:Key="BoolToStarConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.BindingContext>
         <vm:MovieViewModel />
