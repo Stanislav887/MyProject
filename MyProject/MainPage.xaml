@@ -53,28 +53,42 @@
 
         <CollectionView x:Name="MoviesCollectionView"
                     ItemsSource="{Binding FilteredMovies}"
-                    SelectionMode="Single"
-                    SelectionChanged="CollectionView_SelectionChanged"
+                    SelectionMode="None"
                     Grid.Row="2">
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <StackLayout Orientation="Horizontal" Padding="10">
-                    <Label Text="{Binding emoji}" FontSize="30" />
-                        <StackLayout Orientation="Vertical" Padding="10,0">
+                    <Grid Padding="10" ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Emoji -->
+                        <Label Text="{Binding emoji}"
+                               FontSize="30"
+                               VerticalOptions="Center"
+                               Grid.Column="0" />
+
+                        <!-- Movie details -->
+                        <StackLayout Orientation="Vertical"
+                                     Padding="10,0"
+                                     Grid.Column="1">
                             <Label Text="{Binding title}" FontAttributes="Bold" />
                             <Label Text="{Binding year}" FontSize="12" />
                             <Label Text="{Binding director}" FontSize="12" />
                             <Label Text="{Binding rating}" FontSize="12" />
                             <Label Text="{Binding genreString}" FontSize="12" />
                         </StackLayout>
-                        <!-- Clickable favorite star -->
+
+                        <!-- Favorite button -->
                         <Button Text="{Binding IsFavorite, Converter={StaticResource BoolToStarConverter}}"
                                 Clicked="FavoriteButton_Clicked"
                                 FontSize="20"
                                 VerticalOptions="Center"
-                                HorizontalOptions="End"/>
-                    </StackLayout>
-            </DataTemplate>
+                                Grid.Column="2"/>
+                    </Grid>
+                </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>
     </Grid>
