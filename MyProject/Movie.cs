@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MyProject
 {
-    public class Movie
+    public class Movie : INotifyPropertyChanged
     {
         public string title { get; set; }
         public int year { get; set; }
@@ -17,7 +19,10 @@ namespace MyProject
 
         public string genreString => genre != null ? string.Join(", ", genre) : "";
 
-        public bool IsFavorite { get; set; } = false;
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
 
     }

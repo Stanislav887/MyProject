@@ -21,11 +21,13 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <!-- Search Bar -->
         <SearchBar x:Name="MovieSearchBar"
                    Placeholder="Search movies..."
                    TextChanged="SearchBar_TextChanged"
                    Grid.Row="0"/>
 
+        <!-- Sorting Controls -->
         <Grid Grid.Row="1" ColumnSpacing="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -33,17 +35,17 @@
             </Grid.ColumnDefinitions>
 
             <Picker x:Name="SortPicker"
-                Title="Sort by"
-                SelectedIndexChanged="SortPicker_SelectedIndexChanged"
-                Grid.Row="1">
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Rating</x:String>
-                    <x:String>Year</x:String>
-                    <x:String>Title</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
+                    Title="Sort by"
+                    SelectedIndexChanged="SortPicker_SelectedIndexChanged"
+                    Grid.Column="0">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Rating</x:String>
+                        <x:String>Year</x:String>
+                        <x:String>Title</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
 
             <Button Text="{Binding SortOrderText}"
                     Clicked="SortOrderButton_Clicked"
@@ -51,29 +53,20 @@
                     HorizontalOptions="End"/>
         </Grid>
 
+        <!-- Movie List -->
         <CollectionView x:Name="MoviesCollectionView"
-                    ItemsSource="{Binding FilteredMovies}"
-                    SelectionMode="None"
-                    Grid.Row="2">
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                    <Grid Padding="10" ColumnSpacing="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-
+                        ItemsSource="{Binding FilteredMovies}"
+                        SelectionMode="Single"
+                        SelectionChanged="CollectionView_SelectionChanged"
+                        Grid.Row="2">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Horizontal" Padding="10">
                         <!-- Emoji -->
-                        <Label Text="{Binding emoji}"
-                               FontSize="30"
-                               VerticalOptions="Center"
-                               Grid.Column="0" />
+                        <Label Text="{Binding emoji}" FontSize="30" />
 
-                        <!-- Movie details -->
-                        <StackLayout Orientation="Vertical"
-                                     Padding="10,0"
-                                     Grid.Column="1">
+                        <!-- Movie Details -->
+                        <StackLayout Orientation="Vertical" Padding="10,0">
                             <Label Text="{Binding title}" FontAttributes="Bold" />
                             <Label Text="{Binding year}" FontSize="12" />
                             <Label Text="{Binding director}" FontSize="12" />
@@ -81,18 +74,16 @@
                             <Label Text="{Binding genreString}" FontSize="12" />
                         </StackLayout>
 
-                        <!-- Favorite button -->
-                        <Button Text="{Binding IsFavorite, Converter={StaticResource BoolToStarConverter}}"
-                                Clicked="FavoriteButton_Clicked"
-                                FontSize="20"
-                                VerticalOptions="Center"
-                                Grid.Column="2"/>
-                    </Grid>
+                        <!-- Favorite Star -->
+                        <Label Text="{Binding IsFavorite, Converter={StaticResource BoolToStarConverter}}"
+                               FontSize="20"
+                               VerticalOptions="Center" />
+                    </StackLayout>
                 </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </Grid>
-
 </ContentPage>
+
 
 
