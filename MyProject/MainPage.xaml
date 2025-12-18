@@ -74,10 +74,12 @@
                             <Label Text="{Binding genreString}" FontSize="12" />
                         </StackLayout>
 
-                        <!-- Favorite Star -->
-                        <Label Text="{Binding IsFavorite, Converter={StaticResource BoolToStarConverter}}"
-                               FontSize="20"
-                               VerticalOptions="Center" />
+                        <!-- Favorite button -->
+                        <Button Text="{Binding IsFavorite, Converter={StaticResource BoolToStarConverter}}"
+                                Clicked="FavoriteButton_Clicked"
+                                FontSize="20"
+                                VerticalOptions="Center"
+                                HorizontalOptions="End"/>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
