@@ -106,21 +106,29 @@ namespace MyProject
 
         public void ApplySearch(string searchText)
         {
-            if (string.IsNullOrWhiteSpace(searchText))
+            IEnumerable<Movie> query = AllMovies;
+
+
+            // Apply favorites filter
+            if (ShowFavoritesOnly)
             {
-                FilteredMovies = new ObservableCollection<Movie>(AllMovies);
+                query = query.Where(movie => movie.IsFavorite);
             }
-            else
+
+            if (!string.IsNullOrWhiteSpace(searchText))
             {
-                FilteredMovies = new ObservableCollection<Movie>(
-                    AllMovies.Where(movie =>
-                        movie.title.ToLower().Contains(searchText.ToLower()) ||
-                        movie.director.ToLower().Contains(searchText.ToLower()) ||
-                        movie.year.ToString().Contains(searchText) ||
-                        movie.genreString.ToLower().Contains(searchText.ToLower())
-                    )
+                searchText = searchText.ToLower();
+
+                query = query.Where(movie =>
+                    movie.title.ToLower().Contains(searchText) ||
+                    movie.director.ToLower().Contains(searchText) ||
+                    movie.year.ToString().Contains(searchText) ||
+                    movie.genreString.ToLower().Contains(searchText)
                 );
             }
+
+            FilteredMovies = new ObservableCollection<Movie>(query);
+
             SortMovies(CurrentSortOption);
             OnPropertyChanged(nameof(FilteredMovies));
         }
