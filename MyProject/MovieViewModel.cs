@@ -105,6 +105,24 @@ namespace MyProject
 
         }
 
+        private async void LoadFavorites()
+        {
+            string path = Path.Combine(FileSystem.AppDataDirectory, favoritesFileName);
+            if (!File.Exists(path)) return;
+
+            try
+            {
+                string json = await File.ReadAllTextAsync(path);
+                var favorites = JsonSerializer.Deserialize<List<Movie>>(json) ?? new List<Movie>();
+
+                //Mark favorite movies
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading favorites: {ex.Message}");
+            }
+        }
+
         public void ApplySearch(string searchText)
         {
             IEnumerable<Movie> query = AllMovies;
