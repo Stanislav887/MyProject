@@ -12,7 +12,8 @@ namespace MyProject
     {
         private string cacheFileName = "movies.json";
         private Movie _selectedMovie;
-       
+        private bool _showFavoritesOnly;
+
         private List<Movie> AllMovies = new();
         public ObservableCollection<Movie> FilteredMovies { get; set; } = new();
 
@@ -23,6 +24,21 @@ namespace MyProject
         {
             get => SortAscending ? "🔼 Ascending" : "🔽 Descending";
         }
+
+        public bool ShowFavoritesOnly
+        {
+            get => _showFavoritesOnly;
+            set
+            {
+                if (_showFavoritesOnly != value)
+                {
+                    _showFavoritesOnly = value;
+                    ApplySearch(string.Empty); // reapply filtering
+                    OnPropertyChanged();
+                }
+            }
+        }
+
 
         public Movie SelectedMovie
         {
