@@ -115,7 +115,9 @@ namespace MyProject
                 string json = await File.ReadAllTextAsync(path);
                 var favorites = JsonSerializer.Deserialize<List<Movie>>(json) ?? new List<Movie>();
 
-                //Mark favorite movies
+                var favoriteSet = new HashSet<(string title, int year)>(favorites.Select(f => (f.title, f.year)));
+                AllMovies.ForEach(movie => movie.IsFavorite = favoriteSet.Contains((movie.title, movie.year)));
+
             }
             catch (Exception ex)
             {
