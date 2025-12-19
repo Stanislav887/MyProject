@@ -205,7 +205,22 @@ namespace MyProject
             movie.IsFavorite = !movie.IsFavorite;
         }
 
+        private async Task SaveFavoritesAsync()
+        {
+            try
+            {
+                // Only save movies that are currently favorites
+                var favorites = AllMovies.Where(m => m.IsFavorite).ToList();
+                string json = JsonSerializer.Serialize(favorites);
 
+                string path = Path.Combine(FileSystem.AppDataDirectory, favoritesFileName);
+                await File.WriteAllTextAsync(path, json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving favorites: {ex.Message}");
+            }
+        }
 
 
     }
