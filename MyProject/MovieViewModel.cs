@@ -95,6 +95,9 @@ namespace MyProject
             {
                 var movies = JsonSerializer.Deserialize<List<Movie>>(json) ?? new List<Movie>();
                 AllMovies = movies;
+
+                LoadFavorites();
+
                 FilteredMovies = new ObservableCollection<Movie>(AllMovies);
 
                 // Apply persisted sort
