@@ -32,6 +32,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/> <!-- For favorites switch -->
             </Grid.ColumnDefinitions>
 
             <Picker x:Name="SortPicker"
@@ -51,6 +52,15 @@
                     Clicked="SortOrderButton_Clicked"
                     Grid.Column="1"
                     HorizontalOptions="End"/>
+
+            <!-- Favorites Only Switch -->
+            <StackLayout Orientation="Horizontal"
+                         VerticalOptions="Center"
+                         Grid.Column="2"
+                         Spacing="5">
+                <Label Text="Favorites Only" VerticalOptions="Center"/>
+                <Switch IsToggled="{Binding ShowFavoritesOnly}" VerticalOptions="Center"/>
+            </StackLayout>
         </Grid>
 
         <!-- Movie List -->
