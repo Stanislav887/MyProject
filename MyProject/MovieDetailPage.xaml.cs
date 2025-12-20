@@ -8,7 +8,7 @@ namespace MyProject
         private Movie _movie;
 
         // Expose the shared ViewModel
-        public MovieViewModel ViewModel { get; }
+        public MovieViewModel ViewModel { get; set; }
 
         public Movie Movie
         {
@@ -20,12 +20,12 @@ namespace MyProject
             }
         }
 
-        public MovieDetailPage(MovieViewModel viewModel)
+        public MovieDetailPage()
         {
             InitializeComponent();
 
-            // Assign the shared ViewModel
-            ViewModel = viewModel ?? throw new ArgumentNullException(nameof(viewModel));
+            // Use the shared singleton instance
+            ViewModel = MovieViewModel.Shared;
         }
 
         private async void FavoriteButton_Clicked(object sender, EventArgs e)

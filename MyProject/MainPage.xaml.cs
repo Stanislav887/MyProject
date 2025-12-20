@@ -11,7 +11,7 @@ namespace MyProject
         public MainPage()
         {
             InitializeComponent();
-            viewModel = new MovieViewModel();
+            viewModel = MovieViewModel.Shared;
             BindingContext = viewModel;
         }
 
