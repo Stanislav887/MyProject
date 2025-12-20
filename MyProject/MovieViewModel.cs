@@ -17,6 +17,7 @@ namespace MyProject
 
         private List<Movie> AllMovies = new();
         public ObservableCollection<Movie> FilteredMovies { get; set; } = new();
+        public static MovieViewModel Shared { get; } = new MovieViewModel();
 
         public string CurrentSortOption { get; set; }
         public bool SortAscending { get; set; }
