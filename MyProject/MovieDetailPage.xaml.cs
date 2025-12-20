@@ -7,6 +7,9 @@ namespace MyProject
     {
         private Movie _movie;
 
+        // Expose the shared ViewModel
+        public MovieViewModel ViewModel { get; set; }
+
         public Movie Movie
         {
             get => _movie;
