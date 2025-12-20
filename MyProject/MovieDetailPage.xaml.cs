@@ -24,5 +24,14 @@ namespace MyProject
         {
             InitializeComponent();
         }
+
+        public MovieDetailPage(MovieViewModel viewModel)
+        {
+            InitializeComponent();
+
+            // Assign the shared ViewModel
+            ViewModel = viewModel;
+        }
+
     }
 }
