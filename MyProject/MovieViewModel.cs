@@ -8,7 +8,7 @@ using Microsoft.Maui.Storage;
 
 namespace MyProject
 {
-    internal class MovieViewModel : INotifyPropertyChanged
+    public class MovieViewModel : INotifyPropertyChanged
     {
         private string cacheFileName = "movies.json";
         private Movie _selectedMovie;

@@ -33,5 +33,14 @@ namespace MyProject
             ViewModel = viewModel;
         }
 
+        private async void FavoriteButton_Clicked(object sender, EventArgs e)
+        {
+            if (Movie != null)
+            {
+                await ViewModel.ToggleFavorite(Movie);
+            }
+        }
+
+
     }
 }
