@@ -10,7 +10,7 @@
                FontSize="24" 
                FontAttributes="Bold" />
         <Button
-            Text="⭐ Favorite"
+            Text="{Binding IsFavorite, Converter={StaticResource BoolToStarConverter}}"
             Clicked="FavoriteButton_Clicked" />
         <Label Text="{Binding year}" />
         <Label Text="{Binding director}" />
