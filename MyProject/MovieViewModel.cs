@@ -96,7 +96,7 @@ namespace MyProject
                 var movies = JsonSerializer.Deserialize<List<Movie>>(json) ?? new List<Movie>();
                 AllMovies = movies;
 
-                LoadFavorites();
+                await LoadFavoritesAsync();
 
                 FilteredMovies = new ObservableCollection<Movie>(AllMovies);
 
@@ -108,7 +108,7 @@ namespace MyProject
 
         }
 
-        private async void LoadFavorites()
+        private async Task LoadFavoritesAsync()
         {
             string path = Path.Combine(FileSystem.AppDataDirectory, favoritesFileName);
             if (!File.Exists(path)) return;
@@ -200,9 +200,12 @@ namespace MyProject
             SortMovies(CurrentSortOption);
         }
 
-        public void ToggleFavorite(Movie movie)
+        public async Task ToggleFavorite(Movie movie)
         {
             movie.IsFavorite = !movie.IsFavorite;
+
+            // Save the updated favorites to file
+            await SaveFavoritesAsync();
         }
 
         private async Task SaveFavoritesAsync()
