@@ -17,6 +17,8 @@ namespace MyProject
         private string historyFileName = "history.json";
 
         private List<Movie> AllMovies = new();
+
+        private List<MovieHistoryEntry> History = new();
         public ObservableCollection<Movie> FilteredMovies { get; set; } = new();
         public static MovieViewModel Shared { get; } = new MovieViewModel();
 
