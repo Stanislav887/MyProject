@@ -256,6 +256,30 @@ namespace MyProject
 
             // Save the updated favorites to file
             await SaveFavoritesAsync();
+
+            // Record the history
+            if (movie.IsFavorite)
+                await RecordFavoritedAsync(movie);
+            else
+                await RecordUnfavoritedAsync(movie);
+        }
+
+        // Public method to record a viewed movie
+        public async Task RecordViewedAsync(Movie movie)
+        {
+            await AddHistoryEntryAsync(movie, "Viewed");
+        }
+
+        // Public method to record favorited movie
+        public async Task RecordFavoritedAsync(Movie movie)
+        {
+            await AddHistoryEntryAsync(movie, "Favorited");
+        }
+
+        // Public method to record unfavorited movie
+        public async Task RecordUnfavoritedAsync(Movie movie)
+        {
+            await AddHistoryEntryAsync(movie, "Unfavorited");
         }
 
         private async Task SaveFavoritesAsync()
