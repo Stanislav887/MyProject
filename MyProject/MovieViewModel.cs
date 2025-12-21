@@ -149,6 +149,20 @@ namespace MyProject
             }
         }
 
+        private async Task SaveHistoryAsync()
+        {
+            try
+            {
+                string json = JsonSerializer.Serialize(History);
+                string path = Path.Combine(FileSystem.AppDataDirectory, historyFileName);
+                await File.WriteAllTextAsync(path, json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving history: {ex.Message}");
+            }
+        }
+
         public void ApplySearch(string searchText)
         {
             IEnumerable<Movie> query = AllMovies;
