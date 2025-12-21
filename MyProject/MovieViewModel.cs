@@ -21,6 +21,7 @@ namespace MyProject
         private List<MovieHistoryEntry> History = new();
         public ObservableCollection<Movie> FilteredMovies { get; set; } = new();
         public static MovieViewModel Shared { get; } = new MovieViewModel();
+        public ObservableCollection<MovieHistoryEntry> HistoryObservable { get; private set; } = new ObservableCollection<MovieHistoryEntry>();
 
         public string CurrentSortOption { get; set; }
         public bool SortAscending { get; set; }
@@ -165,7 +166,7 @@ namespace MyProject
 
         private async Task AddHistoryEntryAsync(Movie movie, string action)
         {
-            History.Add(new MovieHistoryEntry
+            var entry = new MovieHistoryEntry
             {
                 Title = movie.title,
                 Year = movie.year,
@@ -173,7 +174,10 @@ namespace MyProject
                 Emoji = movie.emoji,
                 Timestamp = DateTime.Now,
                 Action = action
-            });
+            };
+
+            History.Add(entry);                    // Keep for saving to file
+            HistoryObservable.Add(entry);          // For UI updates
 
             await SaveHistoryAsync();
         }
