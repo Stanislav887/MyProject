@@ -17,6 +17,11 @@ namespace MyProject
             {
                 _movie = value;
                 BindingContext = _movie;
+
+                if (_movie != null && ViewModel != null)
+                {
+                    _ = ViewModel.RecordViewedAsync(_movie);
+                }
             }
         }
 
