@@ -163,6 +163,21 @@ namespace MyProject
             }
         }
 
+        private async Task AddHistoryEntryAsync(Movie movie, string action)
+        {
+            History.Add(new MovieHistoryEntry
+            {
+                Title = movie.title,
+                Year = movie.year,
+                Genre = movie.genreString,
+                Emoji = movie.emoji,
+                Timestamp = DateTime.Now,
+                Action = action
+            });
+
+            await SaveHistoryAsync();
+        }
+
         public void ApplySearch(string searchText)
         {
             IEnumerable<Movie> query = AllMovies;
