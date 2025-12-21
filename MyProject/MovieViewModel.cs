@@ -132,6 +132,23 @@ namespace MyProject
             }
         }
 
+        private async Task LoadHistoryAsync()
+        {
+            string path = Path.Combine(FileSystem.AppDataDirectory, historyFileName);
+            if (!File.Exists(path)) return;
+
+            try
+            {
+                string json = await File.ReadAllTextAsync(path);
+                History = JsonSerializer.Deserialize<List<MovieHistoryEntry>>(json)
+                          ?? new List<MovieHistoryEntry>();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading history: {ex.Message}");
+            }
+        }
+
         public void ApplySearch(string searchText)
         {
             IEnumerable<Movie> query = AllMovies;
