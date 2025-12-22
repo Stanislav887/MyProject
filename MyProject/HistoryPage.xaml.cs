@@ -10,5 +10,9 @@ public partial class HistoryPage : ContentPage
         HistoryCollectionView.ItemsSource = MovieViewModel.Shared.HistoryObservable;
     }
 
+    private async void ClearHistoryButton_Clicked(object sender, EventArgs e)
+    {
+        await MovieViewModel.Shared.ClearHistoryAsync();
+    }
 
 }
