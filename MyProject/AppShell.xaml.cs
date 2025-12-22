@@ -9,6 +9,8 @@ namespace MyProject
 
             // Register the route for navigation
             Routing.RegisterRoute(nameof(MovieDetailPage), typeof(MovieDetailPage));
+
+            Routing.RegisterRoute(nameof(HistoryPage), typeof(HistoryPage));
         }
     }
 }
