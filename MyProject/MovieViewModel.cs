@@ -289,6 +289,13 @@ namespace MyProject
             await AddHistoryEntryAsync(movie, "Unfavorited");
         }
 
+        public async Task ClearHistoryAsync()
+        {
+            History.Clear();
+            HistoryObservable.Clear();
+            await SaveHistoryAsync();
+        }
+
         private async Task SaveFavoritesAsync()
         {
             try

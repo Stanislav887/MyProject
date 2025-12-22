@@ -9,4 +9,6 @@ public partial class HistoryPage : ContentPage
 
         HistoryCollectionView.ItemsSource = MovieViewModel.Shared.HistoryObservable;
     }
+
+
 }
