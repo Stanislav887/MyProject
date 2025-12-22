@@ -65,6 +65,7 @@ namespace MyProject
             SortAscending = Preferences.Default.Get("SortAscending", false);
 
             LoadMoviesAsync();
+            _ = LoadHistoryAsync();
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
