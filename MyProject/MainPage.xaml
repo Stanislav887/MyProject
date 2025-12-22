@@ -10,10 +10,6 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentPage.BindingContext>
-        <vm:MovieViewModel />
-    </ContentPage.BindingContext>
-
     <Grid Padding="10" RowSpacing="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -33,6 +29,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/> <!-- For favorites switch -->
+                <ColumnDefinition Width="Auto"/> <!-- History button -->
             </Grid.ColumnDefinitions>
 
             <Picker x:Name="SortPicker"
@@ -53,10 +50,15 @@
                     Grid.Column="1"
                     HorizontalOptions="End"/>
 
+            <Button Text="📜 View History"
+                    Clicked="HistoryButton_Clicked"
+                    Grid.Column="2"
+                    Margin="10" />
+
             <!-- Favorites Only Switch -->
             <StackLayout Orientation="Horizontal"
                          VerticalOptions="Center"
-                         Grid.Column="2"
+                         Grid.Column="3"
                          Spacing="5">
                 <Label Text="Favorites Only" VerticalOptions="Center"/>
                 <Switch IsToggled="{Binding ShowFavoritesOnly}" VerticalOptions="Center"/>
