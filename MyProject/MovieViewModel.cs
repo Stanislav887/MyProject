@@ -143,6 +143,8 @@ namespace MyProject
                 string json = await File.ReadAllTextAsync(path);
                 History = JsonSerializer.Deserialize<List<MovieHistoryEntry>>(json)
                           ?? new List<MovieHistoryEntry>();
+
+                HistoryObservable = new ObservableCollection<MovieHistoryEntry>(History);
             }
             catch (Exception ex)
             {
