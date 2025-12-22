@@ -56,17 +56,17 @@ namespace MyProject
 
         }
 
-        private void FavoriteButton_Clicked(object sender, EventArgs e)
+        private async void FavoriteButton_Clicked(object sender, EventArgs e)
         {
             if (sender is Button btn && btn.BindingContext is Movie movie)
             {
-                viewModel.ToggleFavorite(movie);
+                await viewModel.ToggleFavorite(movie);
             }
         }
 
         private async void HistoryButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new HistoryPage());
+            await Shell.Current.GoToAsync(nameof(HistoryPage));
         }
 
     }
