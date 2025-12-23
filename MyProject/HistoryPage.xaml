@@ -12,12 +12,25 @@
         <!-- Clear History Button -->
         <Button Text="🗑 Clear History"
                 Clicked="ClearHistoryButton_Clicked"
-                HorizontalOptions="Center"
+                HorizontalOptions="End"
                 BackgroundColor="LightCoral"
                 TextColor="White"
-                Margin="0,10"/>
+                Margin="0,0,0,10"/>
 
-        <CollectionView x:Name="HistoryCollectionView">
+        <CollectionView x:Name="HistoryCollectionView"
+                        ItemsSource="{Binding GroupedHistory}"
+                        IsGrouped="True"
+                        Grid.Row="2">
+            <CollectionView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding Key}" 
+                           FontAttributes="Bold" 
+                           FontSize="18"
+                           BackgroundColor="#EEE"
+                           Padding="5"/>
+                </DataTemplate>
+            </CollectionView.GroupHeaderTemplate>
+            
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Orientation="Horizontal" Padding="5">
