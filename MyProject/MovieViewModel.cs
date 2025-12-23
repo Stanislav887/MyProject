@@ -22,7 +22,7 @@ namespace MyProject
         public ObservableCollection<Movie> FilteredMovies { get; set; } = new();
         public static MovieViewModel Shared { get; } = new MovieViewModel();
         public ObservableCollection<MovieHistoryEntry> HistoryObservable { get; private set; } = new ObservableCollection<MovieHistoryEntry>();
-
+        public ObservableCollection<HistoryGroup> GroupedHistory { get; private set; }= new ObservableCollection<HistoryGroup>();
         public string CurrentSortOption { get; set; }
         public bool SortAscending { get; set; }
 
