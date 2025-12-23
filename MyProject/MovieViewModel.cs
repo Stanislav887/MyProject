@@ -313,6 +313,30 @@ namespace MyProject
             }
         }
 
+        private void BuildGroupedHistory()
+        {
+            GroupedHistory.Clear();
+
+            var grouped = History
+                .OrderByDescending(h => h.Timestamp)
+                .GroupBy(h => h.Timestamp.Date);
+
+            foreach (var group in grouped)
+            {
+                string dateLabel =
+                    group.Key == DateTime.Today ? "Today" :
+                    group.Key == DateTime.Today.AddDays(-1) ? "Yesterday" :
+                    group.Key.ToString("yyyy-MM-dd");
+
+                GroupedHistory.Add(
+                    new HistoryGroup(
+                        dateLabel,
+                        new ObservableCollection<MovieHistoryEntry>(group)
+                    )
+                );
+            }
+        }
+
 
     }
 }
