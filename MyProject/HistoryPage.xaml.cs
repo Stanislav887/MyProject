@@ -7,7 +7,7 @@ public partial class HistoryPage : ContentPage
 		InitializeComponent();
         BindingContext = MovieViewModel.Shared; // Use the shared ViewModel
 
-        HistoryCollectionView.ItemsSource = MovieViewModel.Shared.HistoryObservable;
+        HistoryCollectionView.ItemsSource = MovieViewModel.Shared.GroupedHistory;
     }
 
     private async void ClearHistoryButton_Clicked(object sender, EventArgs e)
