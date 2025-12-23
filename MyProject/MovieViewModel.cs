@@ -146,6 +146,7 @@ namespace MyProject
                           ?? new List<MovieHistoryEntry>();
 
                 HistoryObservable = new ObservableCollection<MovieHistoryEntry>(History);
+                BuildGroupedHistory();
             }
             catch (Exception ex)
             {
@@ -181,6 +182,8 @@ namespace MyProject
 
             History.Add(entry);                    // Keep for saving to file
             HistoryObservable.Add(entry);          // For UI updates
+
+            BuildGroupedHistory();
 
             await SaveHistoryAsync();
         }
@@ -293,6 +296,7 @@ namespace MyProject
         {
             History.Clear();
             HistoryObservable.Clear();
+            GroupedHistory.Clear();
             await SaveHistoryAsync();
         }
 
