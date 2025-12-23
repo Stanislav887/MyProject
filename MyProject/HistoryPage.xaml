@@ -23,7 +23,7 @@
                         Grid.Row="2">
             <CollectionView.GroupHeaderTemplate>
                 <DataTemplate>
-                    <Label Text="{Binding Key}" 
+                    <Label Text="{Binding Date}" 
                            FontAttributes="Bold" 
                            FontSize="18"
                            BackgroundColor="#EEE"

@@ -25,6 +25,7 @@ namespace MyProject
         public ObservableCollection<HistoryGroup> GroupedHistory { get; private set; }= new ObservableCollection<HistoryGroup>();
         public string CurrentSortOption { get; set; }
         public bool SortAscending { get; set; }
+        public string CurrentUser { get; set; }
 
         public string SortOrderText
         {
