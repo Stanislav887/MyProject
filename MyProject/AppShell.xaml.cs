@@ -12,5 +12,6 @@ namespace MyProject
 
             Routing.RegisterRoute(nameof(HistoryPage), typeof(HistoryPage));
         }
+
     }
 }
