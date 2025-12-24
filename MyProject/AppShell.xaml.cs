@@ -11,6 +11,19 @@ namespace MyProject
             Routing.RegisterRoute(nameof(MovieDetailPage), typeof(MovieDetailPage));
 
             Routing.RegisterRoute(nameof(HistoryPage), typeof(HistoryPage));
+
+            //Preferences.Default.Remove("UserName");
+
+            // Check if user name is saved
+            string userName = Preferences.Default.Get<string>("UserName", "");
+            if (string.IsNullOrEmpty(userName))
+            {
+                // Show page to enter name
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await this.Navigation.PushModalAsync(new UserNamePage());
+                });
+            }
         }
 
     }

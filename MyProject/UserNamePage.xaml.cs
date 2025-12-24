@@ -1,5 +1,7 @@
 using Microsoft.Maui.Controls;
 
+using Microsoft.Maui.Controls;
+
 namespace MyProject;
 
 public partial class UserNamePage : ContentPage
