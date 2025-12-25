@@ -15,6 +15,10 @@ namespace MyProject
         private bool _showFavoritesOnly;
         private string favoritesFileName = "favorites.json";
         private string historyFileName = "history.json";
+        
+        // New per-user filenames
+        private string FavoritesFileName => $"{CurrentUser}_favorites.json";
+        private string HistoryFileName => $"{CurrentUser}_history.json";
 
         private List<Movie> AllMovies = new();
 
