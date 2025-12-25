@@ -66,6 +66,7 @@ namespace MyProject
 
         public MovieViewModel()
         {
+            CurrentUser = Preferences.Default.Get("UserName", "defaultUser");
             CurrentSortOption = Preferences.Default.Get("SortOption", "Rating");
             SortAscending = Preferences.Default.Get("SortAscending", false);
 
