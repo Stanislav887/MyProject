@@ -30,6 +30,10 @@ namespace MyProject
         public string CurrentSortOption { get; set; }
         public bool SortAscending { get; set; }
         public string CurrentUser { get; set; }
+        public string UserTitle => string.IsNullOrWhiteSpace(CurrentUser)
+                           ? "Movies"
+                           : $"{CurrentUser}'s Movies";
+
 
         public string SortOrderText
         {
