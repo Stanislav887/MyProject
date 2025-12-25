@@ -12,8 +12,6 @@ namespace MyProject
 
             Routing.RegisterRoute(nameof(HistoryPage), typeof(HistoryPage));
 
-            //Preferences.Default.Remove("UserName");
-
             // Check if user name is saved
             string userName = Preferences.Default.Get<string>("UserName", "");
             if (string.IsNullOrEmpty(userName))
