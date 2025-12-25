@@ -121,7 +121,7 @@ namespace MyProject
 
         private async Task LoadFavoritesAsync()
         {
-            string path = Path.Combine(FileSystem.AppDataDirectory, favoritesFileName);
+            string path = Path.Combine(FileSystem.AppDataDirectory, FavoritesFileName);
             if (!File.Exists(path)) return;
 
             try
@@ -141,7 +141,7 @@ namespace MyProject
 
         private async Task LoadHistoryAsync()
         {
-            string path = Path.Combine(FileSystem.AppDataDirectory, historyFileName);
+            string path = Path.Combine(FileSystem.AppDataDirectory, HistoryFileName);
             if (!File.Exists(path)) return;
 
             try
@@ -164,7 +164,7 @@ namespace MyProject
             try
             {
                 string json = JsonSerializer.Serialize(History);
-                string path = Path.Combine(FileSystem.AppDataDirectory, historyFileName);
+                string path = Path.Combine(FileSystem.AppDataDirectory, HistoryFileName);
                 await File.WriteAllTextAsync(path, json);
             }
             catch (Exception ex)
@@ -313,7 +313,7 @@ namespace MyProject
                 var favorites = AllMovies.Where(m => m.IsFavorite).ToList();
                 string json = JsonSerializer.Serialize(favorites);
 
-                string path = Path.Combine(FileSystem.AppDataDirectory, favoritesFileName);
+                string path = Path.Combine(FileSystem.AppDataDirectory, FavoritesFileName);
                 await File.WriteAllTextAsync(path, json);
             }
             catch (Exception ex)
