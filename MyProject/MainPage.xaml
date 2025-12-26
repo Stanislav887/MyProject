@@ -15,6 +15,7 @@
             <RowDefinition Height="Auto"/> <!-- User title -->
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/> <!-- Reset user button -->
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -32,8 +33,17 @@
                    TextChanged="SearchBar_TextChanged"
                    Grid.Row="1"/>
 
+        <!-- Director Filter Entry -->
+        <StackLayout Orientation="Horizontal" Grid.Row="2" Spacing="10" Margin="0,5">
+            <Label Text="Director:" VerticalOptions="Center"/>
+            <Entry x:Name="DirectorFilterEntry"
+                   Placeholder="Filter by director..."
+                   TextChanged="DirectorFilterEntry_TextChanged"
+                   HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+
         <!-- Sorting Controls -->
-        <Grid Grid.Row="2" ColumnSpacing="10">
+        <Grid Grid.Row="3" ColumnSpacing="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
@@ -77,14 +87,14 @@
         <Button Text="Reset Username"
                 Clicked="ResetUsernameButton_Clicked"
                 Margin="0,10" 
-                Grid.Row="3" />
+                Grid.Row="4" />
 
         <!-- Movie List -->
         <CollectionView x:Name="MoviesCollectionView"
                         ItemsSource="{Binding FilteredMovies}"
                         SelectionMode="Single"
                         SelectionChanged="CollectionView_SelectionChanged"
-                        Grid.Row="4">
+                        Grid.Row="5">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Orientation="Horizontal" Padding="10">
