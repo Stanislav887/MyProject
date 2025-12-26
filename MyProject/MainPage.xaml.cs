@@ -75,6 +75,13 @@ namespace MyProject
             await DisplayAlert("Reset", "Username has been cleared. Restart the app.", "OK");
         }
 
+        private void DirectorFilterEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string directorText = e.NewTextValue ?? "";
+            string searchText = MovieSearchBar.Text ?? "";
+
+            viewModel.ApplySearch(searchText, directorText);
+        }
 
     }
 }
