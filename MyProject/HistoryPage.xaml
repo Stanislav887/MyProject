@@ -3,11 +3,18 @@
              x:Class="MyProject.HistoryPage"
              Title="History">
 
-    <StackLayout Padding="20" Spacing="10">
-        <Label Text="Movie History" 
+    <Grid Padding="20" RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Text="Your Movie History" 
                FontSize="24" 
                FontAttributes="Bold"
-               HorizontalOptions="Center" />
+               HorizontalOptions="Center" 
+               Grid.Row="0" />
 
         <!-- Clear History Button -->
         <Button Text="🗑 Clear History"
@@ -15,7 +22,8 @@
                 HorizontalOptions="End"
                 BackgroundColor="LightCoral"
                 TextColor="White"
-                Margin="0,0,0,10"/>
+                Margin="0,0,0,10"
+                Grid.Row="1" />
 
         <CollectionView x:Name="HistoryCollectionView"
                         ItemsSource="{Binding GroupedHistory}"
@@ -30,7 +38,7 @@
                            Padding="5"/>
                 </DataTemplate>
             </CollectionView.GroupHeaderTemplate>
-            
+
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Orientation="Horizontal" Padding="5">
@@ -43,5 +51,5 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </StackLayout>
+    </Grid>
 </ContentPage>

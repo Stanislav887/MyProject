@@ -70,17 +70,9 @@ namespace MyProject
 
         public MovieViewModel()
         {
+            CurrentUser = Preferences.Default.Get("UserName", "defaultUser");
             CurrentSortOption = Preferences.Default.Get("SortOption", "Rating");
             SortAscending = Preferences.Default.Get("SortAscending", false);
-        }
-
-        public void InitializeForUser(string userName)
-        {
-            CurrentUser = userName;
-
-            Preferences.Default.Set("UserName", userName);
-
-            OnPropertyChanged(nameof(UserTitle));
 
             LoadMoviesAsync();
             _ = LoadHistoryAsync();
