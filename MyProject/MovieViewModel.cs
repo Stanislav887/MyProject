@@ -74,6 +74,18 @@ namespace MyProject
             SortAscending = Preferences.Default.Get("SortAscending", false);
         }
 
+        public void InitializeForUser(string userName)
+        {
+            CurrentUser = userName;
+
+            Preferences.Default.Set("UserName", userName);
+
+            OnPropertyChanged(nameof(UserTitle));
+
+            LoadMoviesAsync();
+            _ = LoadHistoryAsync();
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
