@@ -115,7 +115,8 @@
                                 Clicked="FavoriteButton_Clicked"
                                 FontSize="20"
                                 VerticalOptions="Center"
-                                HorizontalOptions="End"/>
+                                HorizontalOptions="End"
+                                x:Name="FavoriteButton"/>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

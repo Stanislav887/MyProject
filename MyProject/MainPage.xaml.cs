@@ -61,6 +61,13 @@ namespace MyProject
             if (sender is Button btn && btn.BindingContext is Movie movie)
             {
                 await viewModel.ToggleFavorite(movie);
+
+                // Animate: pop + rotate
+                await btn.ScaleTo(1.5, 100, Easing.CubicOut); // grow
+                await btn.RotateTo(20, 100, Easing.CubicIn);   // rotate slightly
+                await btn.RotateTo(-20, 100, Easing.CubicIn);
+                await btn.RotateTo(0, 100, Easing.CubicIn);    // reset rotation
+                await btn.ScaleTo(1.0, 100, Easing.CubicIn);   // shrink back
             }
         }
 
