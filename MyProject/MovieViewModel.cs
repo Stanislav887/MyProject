@@ -198,7 +198,7 @@ namespace MyProject
             await SaveHistoryAsync();
         }
 
-        public void ApplySearch(string searchText)
+        public void ApplySearch(string searchText, string directorFilter = "")
         {
             IEnumerable<Movie> query = AllMovies;
 
@@ -219,6 +219,13 @@ namespace MyProject
                     movie.year.ToString().Contains(searchText) ||
                     movie.genreString.ToLower().Contains(searchText)
                 );
+            }
+
+            // Apply director-specific filter
+            if (!string.IsNullOrWhiteSpace(directorFilter))
+            {
+                string lowerDirector = directorFilter.ToLower();
+                query = query.Where(movie => movie.director.ToLower().Contains(lowerDirector));
             }
 
             FilteredMovies = new ObservableCollection<Movie>(query);
