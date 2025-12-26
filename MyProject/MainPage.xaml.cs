@@ -68,6 +68,18 @@ namespace MyProject
                 await btn.RotateTo(-20, 100, Easing.CubicIn);
                 await btn.RotateTo(0, 100, Easing.CubicIn);    // reset rotation
                 await btn.ScaleTo(1.0, 100, Easing.CubicIn);   // shrink back
+
+                // Animate the emoji label
+                if (btn.Parent is StackLayout stack)
+                {
+                    var emojiLabel = stack.Children.OfType<Label>()
+                                                  .FirstOrDefault(l => l.Text == movie.emoji);
+                    if (emojiLabel != null)
+                    {
+                        await emojiLabel.ScaleTo(2, 250, Easing.CubicIn);
+                        await emojiLabel.ScaleTo(1, 250, Easing.CubicOut);
+                    }
+                }
             }
         }
 

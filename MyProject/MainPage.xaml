@@ -99,7 +99,9 @@
                 <DataTemplate>
                     <StackLayout Orientation="Horizontal" Padding="10">
                         <!-- Emoji -->
-                        <Label Text="{Binding emoji}" FontSize="30" />
+                        <Label x:Name="MovieEmojiLabel"
+                               Text="{Binding emoji}" 
+                               FontSize="30" />
 
                         <!-- Movie Details -->
                         <StackLayout Orientation="Vertical" Padding="10,0">
