@@ -359,6 +359,34 @@ namespace MyProject
             }
         }
 
+        private void BuildGenreStats()
+        {
+            GenreStats.Clear();
+
+            var grouped = History
+                .GroupBy(h => h.Genre)
+                .OrderByDescending(g => g.Count());
+
+            foreach (var group in grouped)
+            {
+                string emoji = group.Key switch
+                {
+                    var g when g.Contains("Comedy") => "😂",
+                    var g when g.Contains("Action") => "💥",
+                    var g when g.Contains("Drama") => "🎭",
+                    var g when g.Contains("Horror") => "😱",
+                    var g when g.Contains("Music") => "🎵",
+                    _ => "🎬"
+                };
+
+                GenreStats.Add(new GenreStat
+                {
+                    Genre = group.Key,
+                    EmojiBar = string.Concat(Enumerable.Repeat(emoji, group.Count()))
+                });
+            }
+        }
+
 
     }
 }
