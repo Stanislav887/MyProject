@@ -158,6 +158,7 @@ namespace MyProject
 
                 HistoryObservable = new ObservableCollection<MovieHistoryEntry>(History);
                 BuildGroupedHistory();
+                BuildGenreStats();
             }
             catch (Exception ex)
             {
@@ -195,6 +196,7 @@ namespace MyProject
             HistoryObservable.Add(entry);          // For UI updates
 
             BuildGroupedHistory();
+            BuildGenreStats();
 
             await SaveHistoryAsync();
         }
