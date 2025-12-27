@@ -186,7 +186,7 @@ namespace MyProject
             {
                 Title = movie.title,
                 Year = movie.year,
-                Genre = movie.genreString,
+                Genre = movie.genre,
                 Emoji = movie.emoji,
                 Timestamp = DateTime.Now,
                 Action = action
@@ -365,26 +365,21 @@ namespace MyProject
         {
             GenreStats.Clear();
 
-            var grouped = History
-                .GroupBy(h => h.Genre)
+            // Flatten history: one entry per genre
+            var genreGroups = History
+                .SelectMany(h => h.Genre, (h, genre) => new { genre, emoji = h.Emoji }) // Emoji is string
+                .GroupBy(x => x.genre)
                 .OrderByDescending(g => g.Count());
 
-            foreach (var group in grouped)
+            foreach (var group in genreGroups)
             {
-                string emoji = group.Key switch
-                {
-                    var g when g.Contains("Comedy") => "😂",
-                    var g when g.Contains("Action") => "💥",
-                    var g when g.Contains("Drama") => "🎭",
-                    var g when g.Contains("Horror") => "😱",
-                    var g when g.Contains("Music") => "🎵",
-                    _ => "🎬"
-                };
+                // Concatenate each movie's emoji safely as string
+                string emojiBar = string.Join("", group.Select(x => x.emoji));
 
                 GenreStats.Add(new GenreStat
                 {
                     Genre = group.Key,
-                    EmojiBar = string.Concat(Enumerable.Repeat(emoji, group.Count()))
+                    EmojiBar = emojiBar
                 });
             }
         }
