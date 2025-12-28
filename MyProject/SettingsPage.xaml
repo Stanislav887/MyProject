@@ -7,6 +7,7 @@
 
     <StackLayout Spacing="20">
 
+        <!-- Appearance Section -->
         <Label Text="Appearance" FontAttributes="Bold" FontSize="20"/>
 
         <Picker x:Name="ThemePicker" Title="Choose Theme"
@@ -18,6 +19,13 @@
             </Picker.Items>
         </Picker>
 
+        <!-- Animations Section -->
+        <Label Text="Animations" FontAttributes="Bold" FontSize="20" Margin="0,30,0,0"/>
+        <Switch x:Name="AnimationsSwitch"
+                IsToggled="true"
+                Toggled="AnimationsSwitch_Toggled"/>
+
+        <!-- Data Section -->
         <Label Text="Data"
                FontAttributes="Bold"
                FontSize="20"
