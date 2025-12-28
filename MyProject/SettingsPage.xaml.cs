@@ -33,4 +33,24 @@ public partial class SettingsPage : ContentPage
         }
     }
 
+    private async void ClearHistory_Clicked(object sender, EventArgs e)
+    {
+        bool confirm = await DisplayAlert(
+            "Clear History",
+            "Are you sure you want to clear your movie history?",
+            "Yes",
+            "Cancel");
+
+        if (!confirm)
+            return;
+
+        await MovieViewModel.Shared.ClearHistoryAsync();
+
+        await DisplayAlert(
+            "History Cleared",
+            "Your movie history has been cleared.",
+            "OK");
+    }
+
+
 }
