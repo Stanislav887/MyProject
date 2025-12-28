@@ -11,6 +11,9 @@ public partial class SettingsPage : ContentPage
         // Load saved theme from Preferences
         string theme = Preferences.Default.Get("AppTheme", "System Default");
         ThemePicker.SelectedIndex = ThemePicker.Items.IndexOf(theme);
+
+        // Set AnimationsSwitch to saved preference
+        AnimationsSwitch.IsToggled = Preferences.Default.Get("AnimationsEnabled", true);
     }
 
     private void ThemePicker_SelectedIndexChanged(object sender, EventArgs e)
