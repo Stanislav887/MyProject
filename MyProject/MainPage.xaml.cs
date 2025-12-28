@@ -64,22 +64,25 @@ namespace MyProject
 
                 bool animationsEnabled = Preferences.Default.Get("AnimationsEnabled", true);
 
-                // Animate: pop + rotate
-                await btn.ScaleTo(1.5, 100, Easing.CubicOut); // grow
-                await btn.RotateTo(20, 100, Easing.CubicIn);   // rotate slightly
-                await btn.RotateTo(-20, 100, Easing.CubicIn);
-                await btn.RotateTo(0, 100, Easing.CubicIn);    // reset rotation
-                await btn.ScaleTo(1.0, 100, Easing.CubicIn);   // shrink back
-
-                // Animate the emoji label
-                if (btn.Parent is StackLayout stack)
+                if (animationsEnabled)
                 {
-                    var emojiLabel = stack.Children.OfType<Label>()
-                                                  .FirstOrDefault(l => l.Text == movie.emoji);
-                    if (emojiLabel != null)
+                    // Animate: pop + rotate
+                    await btn.ScaleTo(1.5, 100, Easing.CubicOut); // grow
+                    await btn.RotateTo(20, 100, Easing.CubicIn);   // rotate slightly
+                    await btn.RotateTo(-20, 100, Easing.CubicIn);
+                    await btn.RotateTo(0, 100, Easing.CubicIn);    // reset rotation
+                    await btn.ScaleTo(1.0, 100, Easing.CubicIn);   // shrink back
+
+                    // Animate the emoji label
+                    if (btn.Parent is StackLayout stack)
                     {
-                        await emojiLabel.ScaleTo(2, 250, Easing.CubicIn);
-                        await emojiLabel.ScaleTo(1, 250, Easing.CubicOut);
+                        var emojiLabel = stack.Children.OfType<Label>()
+                                                  .FirstOrDefault(l => l.Text == movie.emoji);
+                        if (emojiLabel != null)
+                        {
+                            await emojiLabel.ScaleTo(2, 250, Easing.CubicIn);
+                            await emojiLabel.ScaleTo(1, 250, Easing.CubicOut);
+                        }
                     }
                 }
             }
