@@ -317,6 +317,7 @@ namespace MyProject
             History.Clear();
             HistoryObservable.Clear();
             GroupedHistory.Clear();
+            GenreStats.Clear();   // Clear emoji chart data
             await SaveHistoryAsync();
         }
 
