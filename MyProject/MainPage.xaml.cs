@@ -62,6 +62,8 @@ namespace MyProject
             {
                 await viewModel.ToggleFavorite(movie);
 
+                bool animationsEnabled = Preferences.Default.Get("AnimationsEnabled", true);
+
                 // Animate: pop + rotate
                 await btn.ScaleTo(1.5, 100, Easing.CubicOut); // grow
                 await btn.RotateTo(20, 100, Easing.CubicIn);   // rotate slightly
