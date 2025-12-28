@@ -5,36 +5,46 @@
              Title="Settings"
              Padding="20">
 
-    <StackLayout Spacing="20">
+    <StackLayout Spacing="30">
 
         <!-- Appearance Section -->
-        <Label Text="Appearance" FontAttributes="Bold" FontSize="20"/>
-
-        <Picker x:Name="ThemePicker" Title="Choose Theme"
-                SelectedIndexChanged="ThemePicker_SelectedIndexChanged">
-            <Picker.Items>
-                <x:String>System Default</x:String>
-                <x:String>Light</x:String>
-                <x:String>Dark</x:String>
-            </Picker.Items>
-        </Picker>
+        <Frame BackgroundColor="#f0f0f0" CornerRadius="10" Padding="15">
+            <StackLayout Spacing="10">
+                <Label Text="Appearance" FontAttributes="Bold" FontSize="20"/>
+                <Picker x:Name="ThemePicker" Title="Choose Theme"
+                        SelectedIndexChanged="ThemePicker_SelectedIndexChanged">
+                    <Picker.Items>
+                        <x:String>System Default</x:String>
+                        <x:String>Light</x:String>
+                        <x:String>Dark</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+        </Frame>
 
         <!-- Animations Section -->
-        <Label Text="Animations" FontAttributes="Bold" FontSize="20" Margin="0,30,0,0"/>
-        <Switch x:Name="AnimationsSwitch"
-                IsToggled="true"
-                Toggled="AnimationsSwitch_Toggled"/>
+        <Frame BackgroundColor="#f0f0f0" CornerRadius="10" Padding="15">
+            <StackLayout Spacing="10">
+                <Label Text="Animations" FontAttributes="Bold" FontSize="20" Margin="0,30,0,0"/>
+                <Switch x:Name="AnimationsSwitch"
+                        IsToggled="true"
+                        Toggled="AnimationsSwitch_Toggled"/>
+            </StackLayout>
+        </Frame>
 
         <!-- Data Section -->
-        <Label Text="Data"
-               FontAttributes="Bold"
-               FontSize="20"
-               Margin="0,30,0,0"/>
-
-        <Button Text="🗑 Clear Movie History"
-                BackgroundColor="LightCoral"
-                TextColor="White"
-                Clicked="ClearHistory_Clicked"/>
+        <Frame BackgroundColor="#f0f0f0" CornerRadius="10" Padding="15">
+            <StackLayout Spacing="10">
+                <Label Text="Data"
+                       FontAttributes="Bold"
+                       FontSize="20"
+                       Margin="0,30,0,0"/>
+                <Button Text="🗑 Clear Movie History"
+                        BackgroundColor="LightCoral"
+                        TextColor="White"
+                        Clicked="ClearHistory_Clicked"/>
+            </StackLayout>
+        </Frame>
 
 
     </StackLayout>
