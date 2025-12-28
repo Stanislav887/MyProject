@@ -18,5 +18,16 @@
             </Picker.Items>
         </Picker>
 
+        <Label Text="Data"
+               FontAttributes="Bold"
+               FontSize="20"
+               Margin="0,30,0,0"/>
+
+        <Button Text="🗑 Clear Movie History"
+                BackgroundColor="LightCoral"
+                TextColor="White"
+                Clicked="ClearHistory_Clicked"/>
+
+
     </StackLayout>
 </ContentPage>
