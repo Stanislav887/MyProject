@@ -16,6 +16,12 @@ public partial class SettingsPage : ContentPage
         AnimationsSwitch.IsToggled = Preferences.Default.Get("AnimationsEnabled", true);
     }
 
+    private void AnimationsSwitch_Toggled(object sender, ToggledEventArgs e)
+    {
+        bool enabled = e.Value;
+        Preferences.Default.Set("AnimationsEnabled", enabled);
+    }
+
     private void ThemePicker_SelectedIndexChanged(object sender, EventArgs e)
     {
         string selected = ThemePicker.SelectedItem.ToString();
