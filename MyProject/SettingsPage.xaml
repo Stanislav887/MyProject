@@ -8,7 +8,7 @@
     <StackLayout Spacing="30">
 
         <!-- Appearance Section -->
-        <Frame BackgroundColor="#f0f0f0" CornerRadius="10" Padding="15">
+        <Frame Background="{DynamicResource SectionBackgroundBrush}" CornerRadius="12" Padding="15" HasShadow="True">
             <StackLayout Spacing="10">
                 <Label Text="Appearance" FontAttributes="Bold" FontSize="20"/>
                 <Picker x:Name="ThemePicker" Title="Choose Theme"
@@ -23,9 +23,9 @@
         </Frame>
 
         <!-- Animations Section -->
-        <Frame BackgroundColor="#f0f0f0" CornerRadius="10" Padding="15">
+        <Frame Background="{DynamicResource SectionBackgroundBrush}" CornerRadius="12" Padding="15" HasShadow="True">
             <StackLayout Spacing="10">
-                <Label Text="Animations" FontAttributes="Bold" FontSize="20" Margin="0,30,0,0"/>
+                <Label Text="Enable animations" FontAttributes="Bold" FontSize="20"/>
                 <Switch x:Name="AnimationsSwitch"
                         IsToggled="true"
                         Toggled="AnimationsSwitch_Toggled"/>
@@ -33,7 +33,7 @@
         </Frame>
 
         <!-- Data Section -->
-        <Frame BackgroundColor="#f0f0f0" CornerRadius="10" Padding="15">
+        <Frame Background="{DynamicResource SectionBackgroundBrush}" CornerRadius="12" Padding="15" HasShadow="True">
             <StackLayout Spacing="10">
                 <Label Text="Data"
                        FontAttributes="Bold"
