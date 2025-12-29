@@ -97,10 +97,11 @@
                             </Grid.ColumnDefinitions>
 
                             <!-- Emoji -->
-                            <Label Text="{Binding emoji}" 
-                               FontSize="30"
-                               VerticalOptions="Center"
-                               Grid.Column="0"/>
+                            <Label ClassId="MovieEmojiLabel"
+                                   Text="{Binding emoji}" 
+                                   FontSize="30"
+                                   VerticalOptions="Center"
+                                   Grid.Column="0"/>
 
                             <!-- Movie Details -->
                             <StackLayout Orientation="Vertical" 
