@@ -63,14 +63,19 @@
                 </Picker.ItemsSource>
             </Picker>
 
-            <!-- Favorites Only Switch -->
-            <StackLayout Orientation="Horizontal"
+            <Frame Grid.Column="3"
+                   Padding="5"
+                   CornerRadius="8"
+                   HasShadow="True"
+                   Background="{DynamicResource CardBackgroundBrush}"
+                   VerticalOptions="Center">
+                <StackLayout Orientation="Horizontal"
                          VerticalOptions="Center"
-                         Grid.Column="3"
                          Spacing="5">
-                <Label Text="Favorites Only" VerticalOptions="Center"/>
-                <Switch IsToggled="{Binding ShowFavoritesOnly}" VerticalOptions="Center"/>
-            </StackLayout>
+                    <Label Text="Favorites Only" VerticalOptions="Center"/>
+                    <Switch IsToggled="{Binding ShowFavoritesOnly}" VerticalOptions="Center"/>
+                </StackLayout>
+            </Frame>
 
             <Button Text="📜 History"
                     Clicked="HistoryButton_Clicked"
@@ -85,7 +90,7 @@
                         VerticalOptions="FillAndExpand">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame CornerRadius="8" Padding="10" Margin="0,0,0,10" HasShadow="True" Background="{DynamicResource CardBackgroundBrush}">
+                    <Frame CornerRadius="12" Padding="10" Margin="0,0,0,10" HasShadow="True" Background="{DynamicResource CardBackgroundBrush}">
                         <Grid ColumnSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
