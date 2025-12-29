@@ -93,11 +93,6 @@ namespace MyProject
             await Shell.Current.GoToAsync(nameof(HistoryPage));
         }
 
-        private async void ResetUsernameButton_Clicked(object sender, EventArgs e)
-        {
-            Preferences.Default.Remove("UserName");
-            await DisplayAlert("Reset", "Username has been cleared. Restart the app.", "OK");
-        }
 
         private void DirectorFilterEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
