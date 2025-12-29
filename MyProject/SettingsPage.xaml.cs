@@ -61,5 +61,25 @@ public partial class SettingsPage : ContentPage
             "OK");
     }
 
+    private async void ResetUsername_Clicked(object sender, EventArgs e)
+    {
+        bool confirm = await DisplayAlert(
+            "Reset Username",
+            "Are you sure you want to reset your username?",
+            "Yes",
+            "Cancel");
+
+        if (!confirm)
+            return;
+
+        Preferences.Default.Remove("UserName");
+
+        await DisplayAlert(
+            "Username Reset",
+            "Username has been cleared. Restart the app to set a new one.",
+            "OK");
+    }
+
+
 
 }
