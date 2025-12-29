@@ -43,8 +43,8 @@
                         BackgroundColor="LightCoral"
                         TextColor="White"
                         Clicked="ClearHistory_Clicked"/>
-            </StackLayout>
-        </Frame>
+                        </StackLayout>
+    </Frame>
 
 
     </StackLayout>
