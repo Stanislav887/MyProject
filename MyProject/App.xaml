@@ -19,7 +19,7 @@
             <SolidColorBrush x:Key="CardBackgroundBrush">
                 <SolidColorBrush.Color>
                     <AppThemeBinding
-                        Light="#FFFFFF"
+                        Light="#F2F2F7"
                         Dark="#2A2A2A" />
                 </SolidColorBrush.Color>
             </SolidColorBrush>

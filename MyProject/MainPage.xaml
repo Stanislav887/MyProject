@@ -83,9 +83,12 @@
                         SelectionMode="Single"
                         SelectionChanged="CollectionView_SelectionChanged"
                         VerticalOptions="FillAndExpand">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+            </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame CornerRadius="12" Padding="10" Margin="0,0,0,10" HasShadow="True" Background="{DynamicResource CardBackgroundBrush}">
+                    <Frame CornerRadius="12" Padding="10" HasShadow="True" Background="{DynamicResource CardBackgroundBrush}">
                         <Grid ColumnSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
