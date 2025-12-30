@@ -19,12 +19,41 @@
                        FontAttributes="Bold"
                        FontSize="20"/>
 
-                <!-- Username display -->
-                <Label Text="{Binding UserName}"
-                       FontSize="16"
-                       Opacity="0.8"/>
+                    <!-- Profile avatar + username with emoji picker -->
+                    <StackLayout Orientation="Horizontal" Spacing="10" VerticalOptions="Center">
+                        <Label Text="{Binding UserEmoji}" FontSize="32"/>
+                        <Label Text="{Binding UserName}" FontSize="16" VerticalOptions="Center"/>
 
-                <!-- Optional: Change username -->
+                        <!-- Emoji picker -->
+                        <Picker x:Name="AvatarPicker"
+                                Title="Choose Emoji"
+                                SelectedIndexChanged="AvatarPicker_SelectedIndexChanged">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <!-- Movie-themed -->
+                                    <x:String>🎬</x:String>
+                                    <x:String>🍿</x:String>
+                                    <x:String>🎥</x:String>
+                                    <x:String>📽️</x:String>
+
+                                    <!-- Fun faces -->
+                                    <x:String>😀</x:String>
+                                    <x:String>😎</x:String>
+                                    <x:String>🤩</x:String>
+                                    <x:String>😺</x:String>
+                                    <x:String>😇</x:String>
+                                    <x:String>🥳</x:String>
+
+                                    <!-- Random fun -->
+                                    <x:String>🐱</x:String>
+                                    <x:String>🦄</x:String>
+                                    <x:String>🚀</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </StackLayout>
+
+                    <!-- Optional: Change username -->
                 <Button Text="✏️ Change Username"
                         Clicked="ChangeUsername_Clicked"/>
 
