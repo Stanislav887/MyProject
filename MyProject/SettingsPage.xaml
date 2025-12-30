@@ -7,6 +7,34 @@
 
     <StackLayout Spacing="30">
 
+        <!-- Profile Section -->
+        <Frame Background="{DynamicResource SectionBackgroundBrush}"
+               CornerRadius="12"
+               Padding="15"
+               HasShadow="True">
+
+            <StackLayout Spacing="10">
+                <Label Text="Profile"
+                       FontAttributes="Bold"
+                       FontSize="20"/>
+
+                <!-- Username display -->
+                <Label Text="{Binding UserName}"
+                       FontSize="16"
+                       Opacity="0.8"/>
+
+                <!-- Optional: Change username -->
+                <Button Text="✏️ Change Username"
+                        Clicked="ChangeUsername_Clicked"/>
+
+                <!-- Reset username -->
+                <Button Text="👤 Reset Username"
+                        BackgroundColor="#FFA07A"
+                        TextColor="White"
+                        Clicked="ResetUsername_Clicked"/>
+            </StackLayout>
+        </Frame>
+
         <!-- Appearance Section -->
         <Frame Background="{DynamicResource SectionBackgroundBrush}" CornerRadius="12" Padding="15" HasShadow="True">
             <StackLayout Spacing="10">
