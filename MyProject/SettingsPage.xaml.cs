@@ -117,6 +117,11 @@ public partial class SettingsPage : ContentPage
 
         // Save valid username
         Preferences.Default.Set("UserName", result.Trim());
+
+        // Notify ViewModel so UI updates (including GreetingMessage)
+        MovieViewModel.Shared.NotifyUsernameChanged();
+
+        // Update local binding (SettingsPage)
         OnPropertyChanged(nameof(UserName));
 
     }
