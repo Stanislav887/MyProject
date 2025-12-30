@@ -10,6 +10,8 @@ public partial class SettingsPage : ContentPage
 	{
 		InitializeComponent();
 
+        BindingContext = this;
+
         // Load saved theme from Preferences
         string theme = Preferences.Default.Get("AppTheme", "System Default");
         ThemePicker.SelectedIndex = ThemePicker.Items.IndexOf(theme);
@@ -83,5 +85,17 @@ public partial class SettingsPage : ContentPage
     }
 
 
+    private async void ChangeUsername_Clicked(object sender, EventArgs e)
+    {
+        string result = await DisplayPromptAsync(
+            "Change Username",
+            "Enter new username:");
+
+        if (!string.IsNullOrWhiteSpace(result))
+        {
+            Preferences.Default.Set("UserName", result.Trim());
+            OnPropertyChanged(nameof(UserName));
+        }
+    }
 
 }
