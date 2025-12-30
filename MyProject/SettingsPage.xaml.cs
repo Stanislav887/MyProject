@@ -14,7 +14,7 @@ public partial class SettingsPage : ContentPage
 	{
 		InitializeComponent();
 
-        BindingContext = this;
+        BindingContext = MovieViewModel.Shared;
 
         // Load saved theme from Preferences
         string theme = Preferences.Default.Get("AppTheme", "System Default");

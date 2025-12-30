@@ -19,6 +19,12 @@
                        FontAttributes="Bold"
                        FontSize="20"/>
 
+                    <!-- Greeting -->
+                    <Label Text="{Binding GreetingMessage}" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           Margin="0,0,0,10"/>
+
                     <!-- Profile avatar + username with emoji picker -->
                     <StackLayout Orientation="Horizontal" Spacing="10" VerticalOptions="Center">
                         <Label Text="{Binding UserEmoji}" FontSize="32"/>
