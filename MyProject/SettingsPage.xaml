@@ -27,7 +27,8 @@
                         <!-- Emoji picker -->
                         <Picker x:Name="AvatarPicker"
                                 Title="Choose Emoji"
-                                SelectedIndexChanged="AvatarPicker_SelectedIndexChanged">
+                                SelectedIndexChanged="AvatarPicker_SelectedIndexChanged"
+                                HorizontalOptions="EndAndExpand">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
                                     <!-- Movie-themed -->

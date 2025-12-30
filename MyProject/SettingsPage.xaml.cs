@@ -95,25 +95,30 @@ public partial class SettingsPage : ContentPage
             "Change Username",
             "Enter new username:");
 
-        if (!string.IsNullOrWhiteSpace(result))
+        if (string.IsNullOrWhiteSpace(result))
         {
-            Preferences.Default.Set("UserName", result.Trim());
-            OnPropertyChanged(nameof(UserName));
+            await DisplayAlert("Invalid Username", "Username cannot be empty.", "OK");
+            return;
         }
-    }
 
-    private async void ChangeAvatar_Clicked(object sender, EventArgs e)
-    {
-        string result = await DisplayPromptAsync(
-            "Select Emoji",
-            "Enter your favorite emoji (e.g., 🎬, 🍿, 🎥):",
-            maxLength: 2); // limit to 1 emoji
-
-        if (!string.IsNullOrWhiteSpace(result))
+        //Maximum Length 
+        if (result.Length > 20)
         {
-            Preferences.Default.Set("UserEmoji", result.Trim());
-            OnPropertyChanged(nameof(UserEmoji));
+            await DisplayAlert("Invalid Username", "Username cannot be longer than 20 characters.", "OK");
+            return;
         }
+
+        // Optional: Invalid characters (allow only letters, numbers, underscores)
+        if (!System.Text.RegularExpressions.Regex.IsMatch(result, @"^[a-zA-Z0-9_]+$"))
+        {
+            await DisplayAlert("Invalid Username", "Username can only contain letters, numbers, and underscores.", "OK");
+            return;
+        }
+
+        // Save valid username
+        Preferences.Default.Set("UserName", result.Trim());
+        OnPropertyChanged(nameof(UserName));
+
     }
 
     private void AvatarPicker_SelectedIndexChanged(object sender, EventArgs e)
