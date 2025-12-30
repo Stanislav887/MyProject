@@ -4,11 +4,10 @@ namespace MyProject;
 
 public partial class SettingsPage : ContentPage
 {
-    // Existing properties
     public string UserName =>
         Preferences.Default.Get("UserName", "Not set");
 
-    // Add this property for the emoji avatar
+    // Property for the emoji avatar
     public string UserEmoji =>
         Preferences.Default.Get("UserEmoji", "🎬"); // default movie emoji
     public SettingsPage()
@@ -100,6 +99,20 @@ public partial class SettingsPage : ContentPage
         {
             Preferences.Default.Set("UserName", result.Trim());
             OnPropertyChanged(nameof(UserName));
+        }
+    }
+
+    private async void ChangeAvatar_Clicked(object sender, EventArgs e)
+    {
+        string result = await DisplayPromptAsync(
+            "Select Emoji",
+            "Enter your favorite emoji (e.g., 🎬, 🍿, 🎥):",
+            maxLength: 2); // limit to 1 emoji
+
+        if (!string.IsNullOrWhiteSpace(result))
+        {
+            Preferences.Default.Set("UserEmoji", result.Trim());
+            OnPropertyChanged(nameof(UserEmoji));
         }
     }
 
