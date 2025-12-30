@@ -116,4 +116,14 @@ public partial class SettingsPage : ContentPage
         }
     }
 
+    private void AvatarPicker_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (AvatarPicker.SelectedIndex == -1)
+            return;
+
+        string selectedEmoji = AvatarPicker.Items[AvatarPicker.SelectedIndex];
+        Preferences.Default.Set("UserEmoji", selectedEmoji);
+        OnPropertyChanged(nameof(UserEmoji));
+    }
+
 }
