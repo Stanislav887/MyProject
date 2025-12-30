@@ -13,12 +13,20 @@
 
     <StackLayout Spacing="15">
 
-        <!-- User Title -->
-        <Label Text="{Binding UserTitle}" 
-               FontSize="24" 
-               FontAttributes="Bold" 
-               HorizontalOptions="Center" 
-               Margin="0,10"/>
+        <StackLayout Spacing="4"
+                     HorizontalOptions="Center"
+                     Margin="0,10">
+
+            <Label Text="🎬 Movie Explorer"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+
+            <Label Text="Discover, rate &amp; favorite your movies"
+                   FontSize="13"
+                   Opacity="0.7"
+                   HorizontalOptions="Center"/>
+        </StackLayout>
 
         <!-- Search Bar -->
         <StackLayout Spacing="10">
