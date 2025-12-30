@@ -83,6 +83,14 @@ namespace MyProject
             _ = LoadHistoryAsync();
         }
 
+        public void NotifyUsernameChanged()
+        {
+            CurrentUser = Preferences.Default.Get("UserName", "Guest");
+            OnPropertyChanged(nameof(CurrentUser));
+            OnPropertyChanged(nameof(UserTitle));
+            OnPropertyChanged(nameof(GreetingMessage));
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
