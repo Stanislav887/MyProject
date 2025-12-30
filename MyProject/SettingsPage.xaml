@@ -78,7 +78,6 @@
                         BackgroundColor="#FFA07A"
                         TextColor="White"
                         Clicked="ResetUsername_Clicked"/>
-
             </StackLayout>
     </Frame>
 

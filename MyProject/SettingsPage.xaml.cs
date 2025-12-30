@@ -1,11 +1,16 @@
-using Microsoft.Maui.Controls;
+﻿using Microsoft.Maui.Controls;
 
 namespace MyProject;
 
 public partial class SettingsPage : ContentPage
 {
+    // Existing properties
     public string UserName =>
-    Preferences.Default.Get("UserName", "Not set");
+        Preferences.Default.Get("UserName", "Not set");
+
+    // Add this property for the emoji avatar
+    public string UserEmoji =>
+        Preferences.Default.Get("UserEmoji", "🎬"); // default movie emoji
     public SettingsPage()
 	{
 		InitializeComponent();
