@@ -108,7 +108,7 @@ public partial class SettingsPage : ContentPage
             return;
         }
 
-        // Optional: Invalid characters (allow only letters, numbers, underscores)
+        // Invalid characters (allow only letters, numbers, underscores)
         if (!System.Text.RegularExpressions.Regex.IsMatch(result, @"^[a-zA-Z0-9_]+$"))
         {
             await DisplayAlert("Invalid Username", "Username can only contain letters, numbers, and underscores.", "OK");

@@ -35,6 +35,10 @@ namespace MyProject
                            ? "Movies"
                            : $"{CurrentUser}'s Movies";
 
+        // GreetingMessage here
+        public string GreetingMessage =>
+            $"Hello, {Preferences.Default.Get("UserName", CurrentUser)}!";
+
 
         public string SortOrderText
         {
