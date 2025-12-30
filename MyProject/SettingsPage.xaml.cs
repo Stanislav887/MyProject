@@ -4,7 +4,9 @@ namespace MyProject;
 
 public partial class SettingsPage : ContentPage
 {
-	public SettingsPage()
+    public string UserName =>
+    Preferences.Default.Get("UserName", "Not set");
+    public SettingsPage()
 	{
 		InitializeComponent();
 
