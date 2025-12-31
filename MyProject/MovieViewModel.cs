@@ -31,6 +31,8 @@ namespace MyProject
         public string CurrentSortOption { get; set; }
         public bool SortAscending { get; set; }
         public string CurrentUser { get; set; }
+
+        public Command RefreshMoviesCommand { get; }
         public string UserTitle => string.IsNullOrWhiteSpace(CurrentUser)
                            ? "Movies"
                            : $"{CurrentUser}'s Movies";
@@ -100,7 +102,19 @@ namespace MyProject
             CurrentSortOption = Preferences.Default.Get("SortOption", "Rating");
             SortAscending = Preferences.Default.Get("SortAscending", false);
 
-            LoadMoviesAsync();
+            // Pull-to-refresh command
+            RefreshMoviesCommand = new Command(async () =>
+            {
+                IsRefreshing = true;
+
+                await LoadMoviesAsync();
+                await LoadHistoryAsync();
+
+                IsRefreshing = false;
+            });
+
+            // Load movies and history on startup (fire-and-forget)
+            _ = LoadMoviesAsync();
             _ = LoadHistoryAsync();
         }
 
@@ -117,7 +131,7 @@ namespace MyProject
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        private async void LoadMoviesAsync()
+        private async Task LoadMoviesAsync()
         {
             string json = string.Empty;
             string localPath = Path.Combine(FileSystem.AppDataDirectory, cacheFileName);
