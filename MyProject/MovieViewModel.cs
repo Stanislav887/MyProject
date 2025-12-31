@@ -110,6 +110,9 @@ namespace MyProject
                 await LoadMoviesAsync();
                 await LoadHistoryAsync();
 
+                // Small delay so spinner is visible
+                await Task.Delay(500);
+
                 IsRefreshing = false;
             });
 
