@@ -35,6 +35,16 @@ namespace MyProject
                            ? "Movies"
                            : $"{CurrentUser}'s Movies";
 
+        public string UserEmoji
+        {
+            get => Preferences.Default.Get("UserEmoji", "🎬");
+            set
+            {
+                Preferences.Default.Set("UserEmoji", value);
+                OnPropertyChanged();
+            }
+        }
+
         // GreetingMessage here
         public string GreetingMessage =>
             $"Hello, {Preferences.Default.Get("UserName", CurrentUser)}!";

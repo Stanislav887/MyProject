@@ -7,9 +7,6 @@ public partial class SettingsPage : ContentPage
     public string UserName =>
         Preferences.Default.Get("UserName", "Not set");
 
-    // Property for the emoji avatar
-    public string UserEmoji =>
-        Preferences.Default.Get("UserEmoji", "🎬"); // default movie emoji
     public SettingsPage()
 	{
 		InitializeComponent();
