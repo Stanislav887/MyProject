@@ -103,18 +103,13 @@
                 <Label Text="Data"
                        FontAttributes="Bold"
                        FontSize="20"/>
-                
-                <Button Text="🗑 Clear Movie History"
+
+                    <Button Text="🗑 Clear Movie History"
                         BackgroundColor="LightCoral"
                         TextColor="White"
                         Clicked="ClearHistory_Clicked"
                         Margin="0,0,0,10"/>
-
-                <Button Text="👤 Reset Username"
-                        BackgroundColor="#FFA07A"
-                        TextColor="White"
-                        Clicked="ResetUsername_Clicked"/>
-            </StackLayout>
+                </StackLayout>
     </Frame>
 
 
