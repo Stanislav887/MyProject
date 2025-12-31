@@ -129,8 +129,9 @@ public partial class SettingsPage : ContentPage
             return;
 
         string selectedEmoji = AvatarPicker.Items[AvatarPicker.SelectedIndex];
-        Preferences.Default.Set("UserEmoji", selectedEmoji);
-        OnPropertyChanged(nameof(UserEmoji));
+        
+        // Update ViewModel 
+        MovieViewModel.Shared.UserEmoji = selectedEmoji;
     }
 
 }
