@@ -1,7 +1,8 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MyProject"
-             x:Class="MyProject.MovieDetailPage">
+             x:Class="MyProject.MovieDetailPage"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -9,19 +10,55 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <StackLayout Padding="20" Spacing="10">
+    <StackLayout Padding="20" Spacing="20">
+
+        <!-- Emoji -->
         <Label Text="{Binding emoji}" 
-               FontSize="50" 
+               FontSize="60" 
                HorizontalOptions="Center" />
+
+        <!-- Title -->
         <Label Text="{Binding title}" 
-               FontSize="24" 
-               FontAttributes="Bold" />
-        <Button
-            Text="{Binding IsFavorite, Converter={StaticResource BoolToStarConverter}}"
-            Clicked="FavoriteButton_Clicked" />
-        <Label Text="{Binding year}" />
-        <Label Text="{Binding director}" />
-        <Label Text="{Binding rating}" />
-        <Label Text="{Binding genreString}" />
+               FontSize="28" 
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
+        <!-- Favorite button -->
+        <Button Text="{Binding IsFavorite, Converter={StaticResource BoolToStarConverter}}"
+                Clicked="FavoriteButton_Clicked"
+                HorizontalOptions="Center"
+                FontSize="22"/>
+
+        <!-- Movie details inside a card-style Frame -->
+        <Frame Background="{DynamicResource CardBackgroundBrush}"
+               CornerRadius="12"
+               Padding="15"
+               HasShadow="True">
+
+            <StackLayout Spacing="12">
+
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Year:" FontAttributes="Bold" WidthRequest="80"/>
+                    <Label Text="{Binding year}" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Director:" FontAttributes="Bold" WidthRequest="80"/>
+                    <Label Text="{Binding director}" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Rating:" FontAttributes="Bold" WidthRequest="80"/>
+                    <Label Text="{Binding rating}" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Genres:" FontAttributes="Bold" WidthRequest="80"/>
+                    <Label Text="{Binding genreString}" />
+                </StackLayout>
+
+            </StackLayout>
+        </Frame>
+
     </StackLayout>
 </ContentPage>
