@@ -86,6 +86,8 @@
             </Grid>
 
         <!-- Movie List -->
+    <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                 Command="{Binding RefreshMoviesCommand}">
         <CollectionView x:Name="MoviesCollectionView"
                         ItemsSource="{Binding FilteredMovies}"
                         SelectionMode="Single"
@@ -134,6 +136,7 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+    </RefreshView>
     
     </StackLayout>
 </ContentPage>
