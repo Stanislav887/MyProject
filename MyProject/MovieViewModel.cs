@@ -179,6 +179,8 @@ namespace MyProject
                 SortMovies(CurrentSortOption);
 
                 OnPropertyChanged(nameof(FilteredMovies));
+                OnPropertyChanged(nameof(HasMovies));
+                OnPropertyChanged(nameof(HasFavorites));
             }
 
         }
@@ -217,6 +219,8 @@ namespace MyProject
                 HistoryObservable = new ObservableCollection<MovieHistoryEntry>(History);
                 BuildGroupedHistory();
                 BuildGenreStats();
+                OnPropertyChanged(nameof(HistoryObservable));
+                OnPropertyChanged(nameof(HasHistory));
             }
             catch (Exception ex)
             {
@@ -256,6 +260,8 @@ namespace MyProject
             BuildGroupedHistory();
             BuildGenreStats();
 
+            OnPropertyChanged(nameof(HasHistory));
+
             await SaveHistoryAsync();
         }
 
@@ -293,6 +299,8 @@ namespace MyProject
 
             SortMovies(CurrentSortOption);
             OnPropertyChanged(nameof(FilteredMovies));
+            OnPropertyChanged(nameof(HasMovies));
+            OnPropertyChanged(nameof(HasFavorites));
         }
 
         public void SortMovies(string sortOption)
@@ -326,6 +334,8 @@ namespace MyProject
 
             FilteredMovies = new ObservableCollection<Movie>(sorted);
             OnPropertyChanged(nameof(FilteredMovies));
+            OnPropertyChanged(nameof(HasMovies));
+            OnPropertyChanged(nameof(HasFavorites));
         }
 
         public void ToggleSortOrder()
@@ -341,6 +351,7 @@ namespace MyProject
         public async Task ToggleFavorite(Movie movie)
         {
             movie.IsFavorite = !movie.IsFavorite;
+            OnPropertyChanged(nameof(HasFavorites));
 
             // Save the updated favorites to file
             await SaveFavoritesAsync();
@@ -377,6 +388,7 @@ namespace MyProject
             GroupedHistory.Clear();
             GenreStats.Clear();   // Clear emoji chart data
             await SaveHistoryAsync();
+            OnPropertyChanged(nameof(HasHistory));
         }
 
         private async Task SaveFavoritesAsync()
