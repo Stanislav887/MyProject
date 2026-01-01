@@ -32,6 +32,14 @@ namespace MyProject
         public bool SortAscending { get; set; }
         public string CurrentUser { get; set; }
 
+        public bool HasMovies => FilteredMovies?.Any() == true;
+
+        public bool HasFavorites =>
+            FilteredMovies?.Any(m => m.IsFavorite) == true;
+
+        public bool HasHistory =>
+            HistoryObservable?.Any() == true;
+
         public Command RefreshMoviesCommand { get; }
         public string UserTitle => string.IsNullOrWhiteSpace(CurrentUser)
                            ? "Movies"

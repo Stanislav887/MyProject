@@ -35,7 +35,6 @@
                 <!-- Favorite button -->
                 <Button Text="{Binding IsFavorite, Converter={StaticResource BoolToStarConverter}}"
                         Clicked="FavoriteButton_Clicked"
-                        HorizontalOptions="Center"
                         FontSize="20"/>
 
         </StackLayout>
