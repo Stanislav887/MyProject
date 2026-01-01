@@ -10,55 +10,76 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <StackLayout Padding="20" Spacing="20">
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
 
-        <!-- Emoji -->
-        <Label Text="{Binding emoji}" 
-               FontSize="60" 
-               HorizontalOptions="Center" />
+        <!-- Movie Header -->
+        <Frame Background="{DynamicResource CardBackgroundBrush}"
+               CornerRadius="16"
+               Padding="20"
+               HasShadow="True">
 
-        <!-- Title -->
-        <Label Text="{Binding title}" 
-               FontSize="28" 
-               FontAttributes="Bold"
-               HorizontalOptions="Center" />
+            <StackLayout Spacing="10" HorizontalOptions="Center">
 
-        <!-- Favorite button -->
-        <Button Text="{Binding IsFavorite, Converter={StaticResource BoolToStarConverter}}"
-                Clicked="FavoriteButton_Clicked"
-                HorizontalOptions="Center"
-                FontSize="22"/>
+                <!-- Emoji -->
+                <Label Text="{Binding emoji}" 
+                       FontSize="60" 
+                       HorizontalOptions="Center" />
+
+                <!-- Title -->
+                <Label Text="{Binding title}" 
+                       FontSize="26" 
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center" />
+
+                <!-- Favorite button -->
+                <Button Text="{Binding IsFavorite, Converter={StaticResource BoolToStarConverter}}"
+                        Clicked="FavoriteButton_Clicked"
+                        HorizontalOptions="Center"
+                        FontSize="20"/>
+
+        </StackLayout>
+        </Frame>
 
         <!-- Movie details inside a card-style Frame -->
         <Frame Background="{DynamicResource CardBackgroundBrush}"
-               CornerRadius="12"
-               Padding="15"
+               CornerRadius="16"
+               Padding="20"
                HasShadow="True">
 
             <StackLayout Spacing="12">
 
-                <StackLayout Orientation="Horizontal" Spacing="10">
-                    <Label Text="Year:" FontAttributes="Bold" WidthRequest="80"/>
-                    <Label Text="{Binding year}" />
+                <Label Text="Movie Details"
+                       FontSize="18"
+                       FontAttributes="Bold"/>
+
+                <!-- Year -->
+                <StackLayout Orientation="Horizontal" Spacing="8">
+                    <Label Text="📅 Year: " FontSize="18"/>
+                    <Label Text="{Binding year}" FontSize="16"/>
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal" Spacing="10">
-                    <Label Text="Director:" FontAttributes="Bold" WidthRequest="80"/>
-                    <Label Text="{Binding director}" />
+                <!-- Year -->
+                <StackLayout Orientation="Horizontal" Spacing="8">
+                    <Label Text="🎬 Director: " FontSize="18"/>
+                    <Label Text="{Binding director}" FontSize="16"/>
                 </StackLayout>
 
+                <!-- Rating -->
                 <StackLayout Orientation="Horizontal" Spacing="10">
-                    <Label Text="Rating:" FontAttributes="Bold" WidthRequest="80"/>
-                    <Label Text="{Binding rating}" />
+                    <Label Text="⭐ Rating: " FontSize="18"/>
+                    <Label Text="{Binding rating}" FontSize="16"/>
                 </StackLayout>
 
+                <!-- Genre -->
                 <StackLayout Orientation="Horizontal" Spacing="10">
-                    <Label Text="Genres:" FontAttributes="Bold" WidthRequest="80"/>
-                    <Label Text="{Binding genreString}" />
+                    <Label Text="🎭 Genre: " FontSize="18"/>
+                    <Label Text="{Binding genreString}" FontSize="16"/>
                 </StackLayout>
 
             </StackLayout>
         </Frame>
 
     </StackLayout>
+    </ScrollView>
 </ContentPage>
