@@ -24,6 +24,9 @@
                 </SolidColorBrush.Color>
             </SolidColorBrush>
 
+            <!-- Inverse bool converter for empty state visibility -->
+            <local:InverseBoolConverter x:Key="InverseBoolConverter" />
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
