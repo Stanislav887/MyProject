@@ -145,10 +145,9 @@
             <StackLayout HorizontalOptions="Center"
                          VerticalOptions="Center"
                          Spacing="10"
-                         Padding="20">
+                         IsVisible="{Binding HasMovies, Converter={StaticResource InverseBoolConverter}}">
                 <Label Text="😢 No movies found."
-                       FontSize="16"
-                       IsVisible="{Binding HasMovies, Converter={StaticResource InverseBoolConverter}}" />
+                       FontSize="16"/>
                 <Label Text="⭐ No favorites yet."
                        FontSize="16"
                        IsVisible="{Binding HasFavorites, Converter={StaticResource InverseBoolConverter}}" />
