@@ -25,6 +25,21 @@ namespace MyProject
             HintFrame.IsVisible = false; // Hide it
         }
 
+        private void FavoriteButton_Pressed(object sender, EventArgs e)
+        {
+            ShowHint("Mark this movie as favorite");
+        }
+
+        private void SortOrderButton_Pressed(object sender, EventArgs e)
+        {
+            ShowHint("Toggle sort order ascending/descending");
+        }
+
+        private void HistoryButton_Pressed(object sender, EventArgs e)
+        {
+            ShowHint("View your movie history");
+        }
+
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
