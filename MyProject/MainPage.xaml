@@ -57,6 +57,7 @@
 
             <Button Text="{Binding SortOrderText}"
                     Clicked="SortOrderButton_Clicked"
+                    SemanticProperties.Hint="Toggle sort order ascending/descending"
                     Grid.Column="0"/>
 
             <Picker x:Name="SortPicker"
@@ -77,12 +78,13 @@
                          Grid.Column="3"
                          Spacing="5">
                  <Label Text="Favorites Only" VerticalOptions="Center"/>
-                 <Switch IsToggled="{Binding ShowFavoritesOnly}" VerticalOptions="Center"/>
+                <Switch IsToggled="{Binding ShowFavoritesOnly}" VerticalOptions="Center" SemanticProperties.Hint="Show only favorite movies"/>
             </StackLayout>
 
 
             <Button Text="📜 History"
                     Clicked="HistoryButton_Clicked"
+                    SemanticProperties.Hint="View your movie history"
                     Grid.Column="4"/>
             </Grid>
 
@@ -133,7 +135,8 @@
                                             FontSize="20"
                                             VerticalOptions="Center"
                                             HorizontalOptions="End"
-                                            Grid.Column="2"/>
+                                            Grid.Column="2"
+                                            SemanticProperties.Hint="Mark this movie as favorite"/>
                                 </Grid>
                             </Frame>
                         </DataTemplate>
