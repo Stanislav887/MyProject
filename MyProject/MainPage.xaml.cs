@@ -15,6 +15,17 @@ namespace MyProject
             BindingContext = viewModel;
         }
 
+        private async void ShowHint(string text)
+        {
+            HintLabel.Text = text;       // Set the hint text
+            HintFrame.IsVisible = true;  // Show the frame + label
+
+            await Task.Delay(1500);      // Keep it visible for 1.5 seconds
+
+            HintFrame.IsVisible = false; // Hide it
+        }
+
+
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
             string searchText = e.NewTextValue ?? "";
