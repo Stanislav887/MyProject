@@ -24,6 +24,15 @@
                 </SolidColorBrush.Color>
             </SolidColorBrush>
 
+            <!-- Theme-aware background for History headers -->
+            <SolidColorBrush x:Key="HistoryHeaderBrush">
+                <SolidColorBrush.Color>
+                    <AppThemeBinding 
+                        Light="#F2F2F7" 
+                        Dark="#2A2A2A"/>
+                </SolidColorBrush.Color>
+            </SolidColorBrush>
+
             <!-- Inverse bool converter for empty state visibility -->
             <local:InverseBoolConverter x:Key="InverseBoolConverter" />
 
