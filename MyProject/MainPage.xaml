@@ -16,33 +16,33 @@
         <StackLayout Spacing="15">
 
             <StackLayout Spacing="4"
-                     HorizontalOptions="Center"
-                     Margin="0,10">
+                         HorizontalOptions="Center"
+                         Margin="0,10">
 
                 <Label Text="🎬 Movie Explorer"
-                   FontSize="26"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center"/>
+                       FontSize="26"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"/>
 
                 <Label Text="Discover, rate &amp; favorite your movies"
-                   FontSize="13"
-                   Opacity="0.7"
-                   HorizontalOptions="Center"/>
+                       FontSize="13"
+                       Opacity="0.7"
+                       HorizontalOptions="Center"/>
             </StackLayout>
 
             <!-- Search Bar -->
             <StackLayout Spacing="10">
                 <SearchBar x:Name="MovieSearchBar"
-                       Placeholder="Search movies..."
-                       TextChanged="SearchBar_TextChanged"/>
+                           Placeholder="Search movies..."
+                           TextChanged="SearchBar_TextChanged"/>
 
                 <!-- Director Filter Entry -->
                 <StackLayout Orientation="Horizontal" Spacing="10">
                     <Label Text="Director:" VerticalOptions="Center"/>
                     <Entry x:Name="DirectorFilterEntry"
-                   Placeholder="Filter by director..."
-                   TextChanged="DirectorFilterEntry_TextChanged"
-                   HorizontalOptions="FillAndExpand"/>
+                           Placeholder="Filter by director..."
+                           TextChanged="DirectorFilterEntry_TextChanged"
+                           HorizontalOptions="FillAndExpand"/>
                 </StackLayout>
             </StackLayout>
 
@@ -57,9 +57,10 @@
                 </Grid.ColumnDefinitions>
 
                 <Button Text="{Binding SortOrderText}"
-                    Clicked="SortOrderButton_Clicked"
-                    SemanticProperties.Hint="Toggle sort order ascending/descending"
-                    Grid.Column="0"/>
+                        Clicked="SortOrderButton_Clicked"
+                        Pressed="SortOrderButton_Pressed"
+                        SemanticProperties.Hint="Toggle sort order ascending/descending"
+                        Grid.Column="0"/>
 
                 <Picker x:Name="SortPicker"
                     Title="Sort by"
@@ -84,16 +85,17 @@
 
 
                 <Button Text="📜 History"
-                    Clicked="HistoryButton_Clicked"
-                    SemanticProperties.Hint="View your movie history"
-                    Grid.Column="4"/>
+                        Clicked="HistoryButton_Clicked"
+                        Pressed="HistoryButton_Pressed"
+                        SemanticProperties.Hint="View your movie history"
+                        Grid.Column="4"/>
             </Grid>
 
             <Grid VerticalOptions="FillAndExpand">
 
                 <!-- Movie List -->
                 <RefreshView IsRefreshing="{Binding IsRefreshing}"
-                 Command="{Binding RefreshMoviesCommand}">
+                             Command="{Binding RefreshMoviesCommand}">
                     <CollectionView x:Name="MoviesCollectionView"
                         ItemsSource="{Binding FilteredMovies}"
                         SelectionMode="Single"
@@ -114,15 +116,15 @@
 
                                         <!-- Emoji -->
                                         <Label ClassId="MovieEmojiLabel"
-                                   Text="{Binding emoji}" 
-                                   FontSize="30"
-                                   VerticalOptions="Center"
-                                   Grid.Column="0"/>
+                                               Text="{Binding emoji}" 
+                                               FontSize="30"
+                                               VerticalOptions="Center"
+                                               Grid.Column="0"/>
 
                                         <!-- Movie Details -->
                                         <StackLayout Orientation="Vertical" 
-                                         Spacing="2"
-                                         Grid.Column="1">
+                                                     Spacing="2"
+                                                     Grid.Column="1">
                                             <Label Text="{Binding title}" FontAttributes="Bold" />
                                             <Label Text="{Binding year}" FontSize="12" />
                                             <Label Text="{Binding director}" FontSize="12" />
@@ -132,12 +134,13 @@
 
                                         <!-- Favorite button -->
                                         <Button Text="{Binding IsFavorite, Converter={StaticResource BoolToStarConverter}}"
-                                            Clicked="FavoriteButton_Clicked"
-                                            FontSize="20"
-                                            VerticalOptions="Center"
-                                            HorizontalOptions="End"
-                                            Grid.Column="2"
-                                            SemanticProperties.Hint="Mark this movie as favorite"/>
+                                                Clicked="FavoriteButton_Clicked"
+                                                FontSize="20"
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="End"
+                                                Grid.Column="2"
+                                                Pressed="FavoriteButton_Pressed"
+                                                SemanticProperties.Hint="Mark this movie as favorite"/>
                                     </Grid>
                                 </Frame>
                             </DataTemplate>
