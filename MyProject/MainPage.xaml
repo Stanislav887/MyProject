@@ -12,153 +12,172 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <StackLayout Spacing="15">
+    <Grid>
+        <StackLayout Spacing="15">
 
-        <StackLayout Spacing="4"
+            <StackLayout Spacing="4"
                      HorizontalOptions="Center"
                      Margin="0,10">
 
-            <Label Text="🎬 Movie Explorer"
+                <Label Text="🎬 Movie Explorer"
                    FontSize="26"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"/>
 
-            <Label Text="Discover, rate &amp; favorite your movies"
+                <Label Text="Discover, rate &amp; favorite your movies"
                    FontSize="13"
                    Opacity="0.7"
                    HorizontalOptions="Center"/>
-        </StackLayout>
+            </StackLayout>
 
-        <!-- Search Bar -->
-        <StackLayout Spacing="10">
-            <SearchBar x:Name="MovieSearchBar"
+            <!-- Search Bar -->
+            <StackLayout Spacing="10">
+                <SearchBar x:Name="MovieSearchBar"
                        Placeholder="Search movies..."
                        TextChanged="SearchBar_TextChanged"/>
 
-        <!-- Director Filter Entry -->
-        <StackLayout Orientation="Horizontal" Spacing="10">
-            <Label Text="Director:" VerticalOptions="Center"/>
-            <Entry x:Name="DirectorFilterEntry"
+                <!-- Director Filter Entry -->
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Director:" VerticalOptions="Center"/>
+                    <Entry x:Name="DirectorFilterEntry"
                    Placeholder="Filter by director..."
                    TextChanged="DirectorFilterEntry_TextChanged"
                    HorizontalOptions="FillAndExpand"/>
-        </StackLayout>
-    </StackLayout>
+                </StackLayout>
+            </StackLayout>
 
-        <!-- Sorting, Favorites, History Row -->
-        <Grid ColumnSpacing="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+            <!-- Sorting, Favorites, History Row -->
+            <Grid ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-            <Button Text="{Binding SortOrderText}"
+                <Button Text="{Binding SortOrderText}"
                     Clicked="SortOrderButton_Clicked"
                     SemanticProperties.Hint="Toggle sort order ascending/descending"
                     Grid.Column="0"/>
 
-            <Picker x:Name="SortPicker"
+                <Picker x:Name="SortPicker"
                     Title="Sort by"
                     SelectedIndexChanged="SortPicker_SelectedIndexChanged"
                     Grid.Column="1">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Rating</x:String>
-                        <x:String>Year</x:String>
-                        <x:String>Title</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Rating</x:String>
+                            <x:String>Year</x:String>
+                            <x:String>Title</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
 
-            <StackLayout Orientation="Horizontal"
+                <StackLayout Orientation="Horizontal"
                          VerticalOptions="Center"
                          Grid.Column="3"
                          Spacing="5">
-                 <Label Text="Favorites Only" VerticalOptions="Center"/>
-                <Switch IsToggled="{Binding ShowFavoritesOnly}" VerticalOptions="Center" SemanticProperties.Hint="Show only favorite movies"/>
-            </StackLayout>
+                    <Label Text="Favorites Only" VerticalOptions="Center"/>
+                    <Switch IsToggled="{Binding ShowFavoritesOnly}" VerticalOptions="Center" SemanticProperties.Hint="Show only favorite movies"/>
+                </StackLayout>
 
 
-            <Button Text="📜 History"
+                <Button Text="📜 History"
                     Clicked="HistoryButton_Clicked"
                     SemanticProperties.Hint="View your movie history"
                     Grid.Column="4"/>
             </Grid>
 
-        <Grid VerticalOptions="FillAndExpand">
+            <Grid VerticalOptions="FillAndExpand">
 
-            <!-- Movie List -->
-            <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                <!-- Movie List -->
+                <RefreshView IsRefreshing="{Binding IsRefreshing}"
                  Command="{Binding RefreshMoviesCommand}">
-                <CollectionView x:Name="MoviesCollectionView"
+                    <CollectionView x:Name="MoviesCollectionView"
                         ItemsSource="{Binding FilteredMovies}"
                         SelectionMode="Single"
                         SelectionChanged="CollectionView_SelectionChanged"
                         VerticalOptions="FillAndExpand">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame CornerRadius="12" Padding="10" HasShadow="True" Background="{DynamicResource CardBackgroundBrush}">
-                                <Grid ColumnSpacing="10">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame CornerRadius="12" Padding="10" HasShadow="True" Background="{DynamicResource CardBackgroundBrush}">
+                                    <Grid ColumnSpacing="10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
 
-                                    <!-- Emoji -->
-                                    <Label ClassId="MovieEmojiLabel"
+                                        <!-- Emoji -->
+                                        <Label ClassId="MovieEmojiLabel"
                                    Text="{Binding emoji}" 
                                    FontSize="30"
                                    VerticalOptions="Center"
                                    Grid.Column="0"/>
 
-                                    <!-- Movie Details -->
-                                    <StackLayout Orientation="Vertical" 
+                                        <!-- Movie Details -->
+                                        <StackLayout Orientation="Vertical" 
                                          Spacing="2"
                                          Grid.Column="1">
-                                        <Label Text="{Binding title}" FontAttributes="Bold" />
-                                        <Label Text="{Binding year}" FontSize="12" />
-                                        <Label Text="{Binding director}" FontSize="12" />
-                                        <Label Text="{Binding rating}" FontSize="12" />
-                                        <Label Text="{Binding genreString}" FontSize="12" />
-                                    </StackLayout>
+                                            <Label Text="{Binding title}" FontAttributes="Bold" />
+                                            <Label Text="{Binding year}" FontSize="12" />
+                                            <Label Text="{Binding director}" FontSize="12" />
+                                            <Label Text="{Binding rating}" FontSize="12" />
+                                            <Label Text="{Binding genreString}" FontSize="12" />
+                                        </StackLayout>
 
-                                    <!-- Favorite button -->
-                                    <Button Text="{Binding IsFavorite, Converter={StaticResource BoolToStarConverter}}"
+                                        <!-- Favorite button -->
+                                        <Button Text="{Binding IsFavorite, Converter={StaticResource BoolToStarConverter}}"
                                             Clicked="FavoriteButton_Clicked"
                                             FontSize="20"
                                             VerticalOptions="Center"
                                             HorizontalOptions="End"
                                             Grid.Column="2"
                                             SemanticProperties.Hint="Mark this movie as favorite"/>
-                                </Grid>
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </RefreshView>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </RefreshView>
 
-            <!-- Empty state messages -->
-            <StackLayout HorizontalOptions="Center"
+                <!-- Empty state messages -->
+                <StackLayout HorizontalOptions="Center"
                          VerticalOptions="Center"
                          Spacing="10"
                          IsVisible="{Binding HasMovies, Converter={StaticResource InverseBoolConverter}}">
-                <Label Text="😢 No movies found."
+                    <Label Text="😢 No movies found."
                        FontSize="16"/>
-                <Label Text="⭐ No favorites yet."
+                    <Label Text="⭐ No favorites yet."
                        FontSize="16"
                        IsVisible="{Binding HasFavorites, Converter={StaticResource InverseBoolConverter}}" />
-            </StackLayout>
+                </StackLayout>
 
-        </Grid>
+            </Grid>
 
-    </StackLayout>
+        </StackLayout>
+
+
+        <!-- HINT OVERLAY -->
+        <Frame IsVisible="False"
+               x:Name="HintFrame"
+               BackgroundColor="#333"
+               Padding="5"
+               CornerRadius="5"
+               HasShadow="False"
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               TranslationY="-40"
+               Opacity="0.8">
+            <Label x:Name="HintLabel" Text="" TextColor="White"/>
+        </Frame>
+
+    </Grid>
+
 </ContentPage>
 
 
