@@ -53,7 +53,7 @@
                         <Label Text="{Binding Date}" 
                            FontAttributes="Bold" 
                            FontSize="18"
-                           BackgroundColor="#EEE"
+                           Background="{DynamicResource HistoryHeaderBrush}"
                            Padding="5"/>
                     </DataTemplate>
                 </CollectionView.GroupHeaderTemplate>
