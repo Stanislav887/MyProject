@@ -18,9 +18,14 @@ namespace MyProject
         private async void ShowHint(string text)
         {
             HintLabel.Text = text;       // Set the hint text
+            HintFrame.Opacity = 0;       // Start fully transparent
             HintFrame.IsVisible = true;  // Show the frame + label
 
+            await HintFrame.FadeTo(0.8, 250);  // Fade in to 80% opacity in 250ms
+
             await Task.Delay(1500);      // Keep it visible for 1.5 seconds
+
+            await HintFrame.FadeTo(0, 250);    // Fade out to transparent in 250ms
 
             HintFrame.IsVisible = false; // Hide it
         }
