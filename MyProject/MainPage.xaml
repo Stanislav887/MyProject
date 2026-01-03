@@ -60,7 +60,14 @@
                         Clicked="SortOrderButton_Clicked"
                         Pressed="SortOrderButton_Pressed"
                         SemanticProperties.Hint="Toggle sort order ascending/descending"
-                        Grid.Column="0"/>
+                        Grid.Column="0">
+
+                    <Button.GestureRecognizers>
+                        <PointerGestureRecognizer
+                            PointerEntered="SortOrderButton_PointerEntered"
+                            PointerExited="PointerExited_HideHint" />
+                    </Button.GestureRecognizers>
+                </Button>
 
                 <Picker x:Name="SortPicker"
                     Title="Sort by"
@@ -90,7 +97,14 @@
                         Clicked="HistoryButton_Clicked"
                         Pressed="HistoryButton_Pressed"
                         SemanticProperties.Hint="View your movie history"
-                        Grid.Column="4"/>
+                        Grid.Column="4">
+
+                    <Button.GestureRecognizers>
+                        <PointerGestureRecognizer
+                            PointerEntered="HistoryButton_PointerEntered"
+                            PointerExited="PointerExited_HideHint" />
+                    </Button.GestureRecognizers>
+                </Button>
             </Grid>
 
             <Grid VerticalOptions="FillAndExpand">
