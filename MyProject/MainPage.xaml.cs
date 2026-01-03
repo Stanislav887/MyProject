@@ -70,6 +70,11 @@ namespace MyProject
             HintFrame.IsVisible = false;
         }
 
+        private async void StatisticsButton_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(StatisticsPage));
+        }
+
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
