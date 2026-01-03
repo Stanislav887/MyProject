@@ -54,6 +54,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
                 <Button Text="{Binding SortOrderText}"
@@ -105,14 +106,14 @@
                             PointerExited="PointerExited_HideHint" />
                     </Button.GestureRecognizers>
                 </Button>
+
+                <Button Text="View Statistics"
+                        Clicked="StatisticsButton_Clicked"
+                        SemanticProperties.Hint="View movie statistics"
+                        Grid.Column="5"
+                        HorizontalOptions="Center"/>
             </Grid>
 
-            <!-- VIEW STATISTICS BUTTON -->
-            <Button Text="View Statistics"
-                    Clicked="StatisticsButton_Clicked"
-                    SemanticProperties.Hint="View movie statistics"
-                    HorizontalOptions="Center"
-                    Margin="0,10"/>
 
             <Grid VerticalOptions="FillAndExpand">
 
