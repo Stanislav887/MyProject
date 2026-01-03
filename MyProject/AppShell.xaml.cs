@@ -12,6 +12,9 @@ namespace MyProject
 
             Routing.RegisterRoute(nameof(HistoryPage), typeof(HistoryPage));
 
+            // Register the StatisticsPage route
+            Routing.RegisterRoute(nameof(StatisticsPage), typeof(StatisticsPage));
+
             // Check if user name is saved
             string userName = Preferences.Default.Get<string>("UserName", "");
             if (string.IsNullOrEmpty(userName))
