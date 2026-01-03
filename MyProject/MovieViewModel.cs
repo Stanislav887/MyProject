@@ -40,6 +40,15 @@ namespace MyProject
         public bool HasHistory =>
             HistoryObservable?.Any() == true;
 
+        public int TotalFavorites => AllMovies.Count(m => m.IsFavorite);
+
+        public string MostWatchedGenre =>
+            AllMovies.GroupBy(m => m.genreString)
+                     .OrderByDescending(g => g.Count())
+                     .Select(g => g.Key)
+                     .FirstOrDefault() ?? "N/A";
+
+
         public Command RefreshMoviesCommand { get; }
         public string UserTitle => string.IsNullOrWhiteSpace(CurrentUser)
                            ? "Movies"
