@@ -45,6 +45,16 @@ namespace MyProject
             ShowHint("View your movie history");
         }
 
+        private void FavoriteButton_PointerEntered(object sender, PointerEventArgs e)
+        {
+            ShowHint("Mark this movie as favorite");
+        }
+
+        private void FavoriteButton_PointerExited(object sender, PointerEventArgs e)
+        {
+            HintFrame.IsVisible = false;
+        }
+
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
