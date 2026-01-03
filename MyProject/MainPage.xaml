@@ -80,7 +80,9 @@
                          Grid.Column="3"
                          Spacing="5">
                     <Label Text="Favorites Only" VerticalOptions="Center"/>
-                    <Switch IsToggled="{Binding ShowFavoritesOnly}" VerticalOptions="Center" SemanticProperties.Hint="Show only favorite movies"/>
+                    <Switch IsToggled="{Binding ShowFavoritesOnly}" 
+                            VerticalOptions="Center" 
+                            SemanticProperties.Hint="Show only favorite movies"/>
                 </StackLayout>
 
 
@@ -140,7 +142,14 @@
                                                 HorizontalOptions="End"
                                                 Grid.Column="2"
                                                 Pressed="FavoriteButton_Pressed"
-                                                SemanticProperties.Hint="Mark this movie as favorite"/>
+                                                SemanticProperties.Hint="Mark this movie as favorite">
+
+                                            <Button.GestureRecognizers>
+                                                <PointerGestureRecognizer
+                                                    PointerEntered="FavoriteButton_PointerEntered"
+                                                    PointerExited="FavoriteButton_PointerExited" />
+                                            </Button.GestureRecognizers>
+                                        </Button>
                                     </Grid>
                                 </Frame>
                             </DataTemplate>
