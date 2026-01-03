@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MyProject"
+             x:Class="MyProject.StatisticsPage"
+             Title="Statistics"
+             Padding="10">
+
+    <StackLayout Spacing="20">
+
+        <Label Text="🎬 Movie Statistics"
+               FontSize="24"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"/>
+
+        <Frame BackgroundColor="#EEE" CornerRadius="10" Padding="10">
+            <StackLayout>
+                <Label Text="Total Favorites" FontAttributes="Bold"/>
+                <Label Text="{Binding TotalFavorites}" FontSize="18"/>
+            </StackLayout>
+        </Frame>
+
+        <Frame BackgroundColor="#EEE" CornerRadius="10" Padding="10">
+            <StackLayout>
+                <Label Text="Most Popular Genre" FontAttributes="Bold"/>
+                <Label Text="{Binding MostWatchedGenre}" FontSize="18"/>
+            </StackLayout>
+        </Frame>
+
+    </StackLayout>
+</ContentPage>
