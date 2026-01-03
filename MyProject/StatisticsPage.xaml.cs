@@ -1,9 +1,14 @@
+using Microsoft.Maui.Controls;
+
 namespace MyProject;
 
 public partial class StatisticsPage : ContentPage
 {
-	public StatisticsPage()
+    private MovieViewModel viewModel;
+    public StatisticsPage()
 	{
 		InitializeComponent();
-	}
+        viewModel = MovieViewModel.Shared;
+        BindingContext = viewModel;
+    }
 }
