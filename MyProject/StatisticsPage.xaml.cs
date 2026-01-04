@@ -11,4 +11,12 @@ public partial class StatisticsPage : ContentPage
         viewModel = MovieViewModel.Shared;
         BindingContext = viewModel;
     }
+
+    private void StatsTimeRangePicker_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (StatsTimeRangePicker.SelectedItem is string selected)
+        {
+            viewModel.SelectedTimeRange = selected;
+        }
+    }
 }
