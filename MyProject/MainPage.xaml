@@ -107,7 +107,7 @@
                     </Button.GestureRecognizers>
                 </Button>
 
-                <Button Text="View Statistics"
+                <Button Text="📊 View Statistics"
                         Clicked="StatisticsButton_Clicked"
                         Pressed="StatisticsButton_Pressed"
                         SemanticProperties.Hint="View movie statistics"

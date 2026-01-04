@@ -14,28 +14,28 @@
 
         <Frame  Background="{DynamicResource SectionBackgroundBrush}" Padding="10" HasShadow="True">
             <StackLayout>
-                <Label Text="Total Favorites:" FontAttributes="Bold"/>
+                <Label Text="❤️ Total Favorites:" FontAttributes="Bold"/>
                 <Label Text="{Binding TotalFavorites}" FontSize="18"/>
             </StackLayout>
         </Frame>
 
         <Frame  Background="{DynamicResource SectionBackgroundBrush}" Padding="10" HasShadow="True">
             <StackLayout>
-                <Label Text="Most Watched Genre:" FontAttributes="Bold"/>
+                <Label Text="🎬 Most Watched Genre:" FontAttributes="Bold"/>
                 <Label Text="{Binding MostWatchedGenre}" FontSize="18"/>
             </StackLayout>
         </Frame>
 
         <Frame Padding="10" HasShadow="True" Background="{DynamicResource SectionBackgroundBrush}">
             <StackLayout>
-                <Label Text="Average Rating:" FontAttributes="Bold"/>
+                <Label Text="⭐ Average Rating:" FontAttributes="Bold"/>
                 <Label Text="{Binding AverageRating}" FontSize="18"/>
             </StackLayout>
         </Frame>
 
         <Frame Padding="10" HasShadow="True" Background="{DynamicResource SectionBackgroundBrush}">
             <StackLayout>
-                <Label Text="Top Director:" FontAttributes="Bold"/>
+                <Label Text="🎥 Top Director:" FontAttributes="Bold"/>
                 <Label Text="{Binding TopDirector}" FontSize="18"/>
             </StackLayout>
         </Frame>
