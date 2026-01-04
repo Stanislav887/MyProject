@@ -70,6 +70,11 @@ namespace MyProject
             ShowHint("View movie statistics");
         }
 
+        private void StatisticsButton_Pressed(object sender, EventArgs e)
+        {
+            ShowHint("View movie statistics");
+        }
+
         private void PointerExited_HideHint(object sender, PointerEventArgs e)
         {
             HintFrame.IsVisible = false;
