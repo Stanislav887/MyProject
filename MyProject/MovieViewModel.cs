@@ -40,23 +40,25 @@ namespace MyProject
         public bool HasHistory =>
             HistoryObservable?.Any() == true;
 
-        public int TotalFavorites => AllMovies.Count(m => m.IsFavorite);
+        public int TotalFavorites => FilteredMoviesByTimeRange().Count(m => m.IsFavorite);
 
         public string MostWatchedGenre =>
-            AllMovies.GroupBy(m => m.genreString)
-                     .OrderByDescending(g => g.Count())
-                     .Select(g => g.Key)
-                     .FirstOrDefault() ?? "N/A";
+            FilteredMoviesByTimeRange()
+                .GroupBy(m => m.genreString)
+                .OrderByDescending(g => g.Count())
+                .Select(g => g.Key)
+                .FirstOrDefault() ?? "N/A";
 
-        public double AverageRating => AllMovies.Any()
-            ? AllMovies.Average(m => m.rating)
+        public double AverageRating => FilteredMoviesByTimeRange().Any()
+            ? FilteredMoviesByTimeRange().Average(m => m.rating)
             : 0;
 
         public string TopDirector =>
-            AllMovies.GroupBy(m => m.director)
-             .OrderByDescending(g => g.Count())
-             .Select(g => g.Key)
-             .FirstOrDefault() ?? "N/A";
+            FilteredMoviesByTimeRange()
+                .GroupBy(m => m.director)
+                .OrderByDescending(g => g.Count())
+                .Select(g => g.Key)
+                .FirstOrDefault() ?? "N/A";
 
 
         public Command RefreshMoviesCommand { get; }
