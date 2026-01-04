@@ -65,6 +65,11 @@ namespace MyProject
             ShowHint("View your movie history");
         }
 
+        private void StatisticsButton_PointerEntered(object sender, PointerEventArgs e)
+        {
+            ShowHint("View movie statistics");
+        }
+
         private void PointerExited_HideHint(object sender, PointerEventArgs e)
         {
             HintFrame.IsVisible = false;
