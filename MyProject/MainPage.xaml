@@ -111,7 +111,14 @@
                         Clicked="StatisticsButton_Clicked"
                         SemanticProperties.Hint="View movie statistics"
                         Grid.Column="5"
-                        HorizontalOptions="Center"/>
+                        HorizontalOptions="Center">
+
+                    <Button.GestureRecognizers>
+                        <PointerGestureRecognizer
+                            PointerEntered="StatisticsButton_PointerEntered"
+                            PointerExited="PointerExited_HideHint"/>
+                    </Button.GestureRecognizers>
+                </Button>
             </Grid>
 
 
