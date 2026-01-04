@@ -17,6 +17,8 @@ namespace MyProject
         public double rating { get; set; }
         public string emoji { get; set; }
 
+        public DateTime DateAdded { get; set; } = DateTime.Now;
+
         public string genreString => genre != null ? string.Join(", ", genre) : "";
 
         private bool _isFavorite;

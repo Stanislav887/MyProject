@@ -82,6 +82,18 @@ namespace MyProject
             }
         }
 
+        private IEnumerable<Movie> FilteredMoviesByTimeRange()
+        {
+            DateTime now = DateTime.Now;
+
+            return selectedTimeRange switch
+            {
+                "Last Month" => AllMovies.Where(m => m.DateAdded >= now.AddMonths(-1)),
+                "Last Year" => AllMovies.Where(m => m.DateAdded >= now.AddYears(-1)),
+                _ => AllMovies
+            };
+        }
+
         private bool _isRefreshing;
         public bool IsRefreshing
         {
