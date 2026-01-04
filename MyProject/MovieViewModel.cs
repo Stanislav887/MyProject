@@ -218,6 +218,14 @@ namespace MyProject
             if (!string.IsNullOrEmpty(json))
             {
                 var movies = JsonSerializer.Deserialize<List<Movie>>(json) ?? new List<Movie>();
+
+                // Ensure every movie has a DateAdded value
+                foreach (var movie in movies)
+                {
+                    if (movie.DateAdded == default)
+                        movie.DateAdded = DateTime.Now;
+                }
+
                 AllMovies = movies;
 
                 await LoadFavoritesAsync();
