@@ -25,5 +25,20 @@
                 <Label Text="{Binding MostWatchedGenre}" FontSize="18"/>
             </StackLayout>
         </Frame>
+
+        <Frame Padding="10" HasShadow="True" Background="{DynamicResource SectionBackgroundBrush}">
+            <StackLayout>
+                <Label Text="Average Rating:" FontAttributes="Bold"/>
+                <Label Text="{Binding AverageRating}" FontSize="18"/>
+            </StackLayout>
+        </Frame>
+
+        <Frame Padding="10" HasShadow="True" Background="{DynamicResource SectionBackgroundBrush}">
+            <StackLayout>
+                <Label Text="Top Director:" FontAttributes="Bold"/>
+                <Label Text="{Binding TopDirector}" FontSize="18"/>
+            </StackLayout>
+        </Frame>
+        
     </StackLayout>
 </ContentPage>
