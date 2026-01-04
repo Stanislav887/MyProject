@@ -64,6 +64,24 @@ namespace MyProject
                            ? "Movies"
                            : $"{CurrentUser}'s Movies";
 
+        private string selectedTimeRange = "All Time";
+        public string SelectedTimeRange
+        {
+            get => selectedTimeRange;
+            set
+            {
+                if (selectedTimeRange != value)
+                {
+                    selectedTimeRange = value;
+                    OnPropertyChanged();
+                    OnPropertyChanged(nameof(TotalFavorites));
+                    OnPropertyChanged(nameof(MostWatchedGenre));
+                    OnPropertyChanged(nameof(AverageRating));
+                    OnPropertyChanged(nameof(TopDirector));
+                }
+            }
+        }
+
         private bool _isRefreshing;
         public bool IsRefreshing
         {
