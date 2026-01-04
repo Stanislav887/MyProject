@@ -48,6 +48,12 @@ namespace MyProject
                      .Select(g => g.Key)
                      .FirstOrDefault() ?? "N/A";
 
+        public double AverageRating => AllMovies.Any()
+            ? AllMovies.Average(m => m.rating)
+            : 0;
+
+
+
 
         public Command RefreshMoviesCommand { get; }
         public string UserTitle => string.IsNullOrWhiteSpace(CurrentUser)
