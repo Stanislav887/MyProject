@@ -109,6 +109,7 @@
 
                 <Button Text="View Statistics"
                         Clicked="StatisticsButton_Clicked"
+                        Pressed="StatisticsButton_Pressed"
                         SemanticProperties.Hint="View movie statistics"
                         Grid.Column="5"
                         HorizontalOptions="Center">
