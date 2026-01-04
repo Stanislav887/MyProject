@@ -12,6 +12,20 @@
     <StackLayout Spacing="20">
         <Label Text="📊 Movie Statistics" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center"/>
 
+        <Picker x:Name="StatsTimeRangePicker"
+                Title="Select Time Range"
+                SelectedIndexChanged="StatsTimeRangePicker_SelectedIndexChanged"
+                HorizontalOptions="Center"
+                Margin="0,5">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>All Time</x:String>
+                    <x:String>Last Year</x:String>
+                    <x:String>Last Month</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
         <Frame  Background="{DynamicResource SectionBackgroundBrush}" Padding="10" HasShadow="True">
             <StackLayout>
                 <Label Text="❤️ Total Favorites:" FontAttributes="Bold"/>
