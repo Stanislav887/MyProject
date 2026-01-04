@@ -52,7 +52,11 @@ namespace MyProject
             ? AllMovies.Average(m => m.rating)
             : 0;
 
-
+        public string TopDirector =>
+            AllMovies.GroupBy(m => m.director)
+             .OrderByDescending(g => g.Count())
+             .Select(g => g.Key)
+             .FirstOrDefault() ?? "N/A";
 
 
         public Command RefreshMoviesCommand { get; }
