@@ -87,7 +87,8 @@
                 <StackLayout Orientation="Horizontal"
                          VerticalOptions="Center"
                          Grid.Column="3"
-                         Spacing="5">
+                         Spacing="5"
+                             Padding="60,0,0,0">
                     <Label Text="Favorites Only" VerticalOptions="Center"/>
                     <Switch IsToggled="{Binding ShowFavoritesOnly}" 
                             VerticalOptions="Center" 
