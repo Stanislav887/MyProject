@@ -50,8 +50,8 @@
             <Grid ColumnSpacing="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
@@ -73,7 +73,8 @@
                 <Picker x:Name="SortPicker"
                     Title="Sort by"
                     SelectedIndexChanged="SortPicker_SelectedIndexChanged"
-                    Grid.Column="1">
+                    Grid.Column="1"
+                    HorizontalOptions="FillAndExpand">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Rating</x:String>
