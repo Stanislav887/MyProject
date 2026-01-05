@@ -240,6 +240,11 @@ namespace MyProject
                 OnPropertyChanged(nameof(FilteredMovies));
                 OnPropertyChanged(nameof(HasMovies));
                 OnPropertyChanged(nameof(HasFavorites));
+                
+                OnPropertyChanged(nameof(TotalFavorites));
+                OnPropertyChanged(nameof(MostWatchedGenre));
+                OnPropertyChanged(nameof(AverageRating));
+                OnPropertyChanged(nameof(TopDirector));
             }
 
         }
