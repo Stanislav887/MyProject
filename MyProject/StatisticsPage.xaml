@@ -43,7 +43,7 @@
         <Frame Padding="10" HasShadow="True" Background="{DynamicResource SectionBackgroundBrush}">
             <StackLayout>
                 <Label Text="⭐ Average Rating:" FontAttributes="Bold"/>
-                <Label Text="{Binding AverageRating}" FontSize="18"/>
+                <Label Text="{Binding AverageRating, StringFormat='{0:F1}/10'}" FontSize="18"/>
             </StackLayout>
         </Frame>
 
