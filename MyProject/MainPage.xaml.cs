@@ -22,6 +22,7 @@ namespace MyProject
         }
 
 
+
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
             string searchText = e.NewTextValue ?? "";

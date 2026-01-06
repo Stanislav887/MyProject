@@ -97,6 +97,9 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame CornerRadius="12" Padding="10" HasShadow="True" Background="{DynamicResource CardBackgroundBrush}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="MovieFrame_Tapped" NumberOfTapsRequired="1"/>
+                            </Frame.GestureRecognizers>
                             <Grid ColumnSpacing="10">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
