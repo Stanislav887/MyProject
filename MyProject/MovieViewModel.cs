@@ -533,6 +533,23 @@ namespace MyProject
             }
         }
 
+        public void UpdateTopMovies()
+        {
+            if (AllMovies == null || !AllMovies.Any())
+            {
+                TopMovies = new ObservableCollection<Movie>();
+                return;
+            }
+
+            // Take top 10 by rating
+            var top = AllMovies
+                .OrderByDescending(m => m.rating) // assuming rating is double
+                .Take(10)
+                .ToList();
+
+            TopMovies = new ObservableCollection<Movie>(top);
+        }
+
 
     }
 }
