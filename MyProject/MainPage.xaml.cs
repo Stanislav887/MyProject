@@ -15,50 +15,6 @@ namespace MyProject
             BindingContext = viewModel;
         }
 
-        private async void ShowHint(string text)
-        {
-            HintLabel.Text = text;       // Set the hint text
-            HintFrame.Opacity = 0;       // Start fully transparent
-            HintFrame.IsVisible = true;  // Show the frame + label
-
-            await HintFrame.FadeTo(0.8, 250);  // Fade in to 80% opacity in 250ms
-
-            await Task.Delay(1500);      // Keep it visible for 1.5 seconds
-
-            await HintFrame.FadeTo(0, 250);    // Fade out to transparent in 250ms
-
-            HintFrame.IsVisible = false; // Hide it
-        }
-
-        private void FavoriteButton_PointerEntered(object sender, PointerEventArgs e)
-        {
-            ShowHint("Mark this movie as favorite");
-        }
-
-        private void FavoriteButton_PointerExited(object sender, PointerEventArgs e)
-        {
-            HintFrame.IsVisible = false;
-        }
-
-        private void SortOrderButton_PointerEntered(object sender, PointerEventArgs e)
-        {
-            ShowHint("Toggle sort order ascending/descending");
-        }
-
-        private void HistoryButton_PointerEntered(object sender, PointerEventArgs e)
-        {
-            ShowHint("View your movie history");
-        }
-
-        private void StatisticsButton_PointerEntered(object sender, PointerEventArgs e)
-        {
-            ShowHint("View movie statistics");
-        }
-
-        private void PointerExited_HideHint(object sender, PointerEventArgs e)
-        {
-            HintFrame.IsVisible = false;
-        }
 
         private async void StatisticsButton_Clicked(object sender, EventArgs e)
         {
