@@ -28,6 +28,7 @@ namespace MyProject
         public ObservableCollection<GenreStat> GenreStats { get; } = new();
         public ObservableCollection<MovieHistoryEntry> HistoryObservable { get; private set; } = new ObservableCollection<MovieHistoryEntry>();
         public ObservableCollection<HistoryGroup> GroupedHistory { get; private set; }= new ObservableCollection<HistoryGroup>();
+        private ObservableCollection<Movie> topMovies = new();
         public string CurrentSortOption { get; set; }
         public bool SortAscending { get; set; }
         public string CurrentUser { get; set; }
@@ -104,6 +105,19 @@ namespace MyProject
             {
                 _isRefreshing = value;
                 OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<Movie> TopMovies
+        {
+            get => topMovies;
+            set
+            {
+                if (topMovies != value)
+                {
+                    topMovies = value;
+                    OnPropertyChanged();
+                }
             }
         }
 
