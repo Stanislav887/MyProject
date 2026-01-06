@@ -69,35 +69,17 @@
                 <!-- Sort Order Button -->
                 <Button Text="{Binding SortOrderText}"
                         Clicked="SortOrderButton_Clicked"
-                        SemanticProperties.Hint="Toggle sort order ascending/descending">
-                    <Button.GestureRecognizers>
-                        <PointerGestureRecognizer
-                            PointerEntered="SortOrderButton_PointerEntered"
-                            PointerExited="PointerExited_HideHint" />
-                    </Button.GestureRecognizers>
-                </Button>
+                        SemanticProperties.Hint="Toggle sort order ascending/descending"/>
 
                 <!-- History Button -->
                 <Button Text="📜 History"
                         Clicked="HistoryButton_Clicked"
-                        SemanticProperties.Hint="View your movie history">
-                    <Button.GestureRecognizers>
-                        <PointerGestureRecognizer
-                            PointerEntered="HistoryButton_PointerEntered"
-                            PointerExited="PointerExited_HideHint" />
-                    </Button.GestureRecognizers>
-                </Button>
+                        SemanticProperties.Hint="View your movie history"/>
 
                 <!-- Statistics Button -->
                 <Button Text="📊 View Statistics"
                         Clicked="StatisticsButton_Clicked"
-                        SemanticProperties.Hint="View movie statistics">
-                    <Button.GestureRecognizers>
-                        <PointerGestureRecognizer
-                            PointerEntered="StatisticsButton_PointerEntered"
-                            PointerExited="PointerExited_HideHint"/>
-                    </Button.GestureRecognizers>
-                </Button>
+                        SemanticProperties.Hint="View movie statistics"/>
 
             </StackLayout>
         </ScrollView>
@@ -145,13 +127,7 @@
                                         VerticalOptions="Center"
                                         HorizontalOptions="End"
                                         Grid.Column="2"
-                                        SemanticProperties.Hint="Mark this movie as favorite">
-                                    <Button.GestureRecognizers>
-                                        <PointerGestureRecognizer
-                                            PointerEntered="FavoriteButton_PointerEntered"
-                                            PointerExited="FavoriteButton_PointerExited" />
-                                    </Button.GestureRecognizers>
-                                </Button>
+                                        SemanticProperties.Hint="Mark this movie as favorite"/>
                             </Grid>
                         </Frame>
                     </DataTemplate>
