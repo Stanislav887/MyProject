@@ -84,6 +84,7 @@
             </StackLayout>
         </ScrollView>
 
+        <Grid VerticalOptions="FillAndExpand">
         <!-- Movie List -->
         <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshMoviesCommand}">
             <CollectionView x:Name="MoviesCollectionView"
@@ -148,6 +149,7 @@
                    FontSize="16"
                    IsVisible="{Binding HasFavorites, Converter={StaticResource InverseBoolConverter}}" />
         </StackLayout>
+        </Grid>
 
         <!-- HINT OVERLAY -->
         <Frame IsVisible="False"
