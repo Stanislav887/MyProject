@@ -30,21 +30,6 @@ namespace MyProject
             HintFrame.IsVisible = false; // Hide it
         }
 
-        private void FavoriteButton_Pressed(object sender, EventArgs e)
-        {
-            ShowHint("Mark this movie as favorite");
-        }
-
-        private void SortOrderButton_Pressed(object sender, EventArgs e)
-        {
-            ShowHint("Toggle sort order ascending/descending");
-        }
-
-        private void HistoryButton_Pressed(object sender, EventArgs e)
-        {
-            ShowHint("View your movie history");
-        }
-
         private void FavoriteButton_PointerEntered(object sender, PointerEventArgs e)
         {
             ShowHint("Mark this movie as favorite");
@@ -66,11 +51,6 @@ namespace MyProject
         }
 
         private void StatisticsButton_PointerEntered(object sender, PointerEventArgs e)
-        {
-            ShowHint("View movie statistics");
-        }
-
-        private void StatisticsButton_Pressed(object sender, EventArgs e)
         {
             ShowHint("View movie statistics");
         }
