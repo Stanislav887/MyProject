@@ -59,7 +59,6 @@
 
                 <Button Text="{Binding SortOrderText}"
                         Clicked="SortOrderButton_Clicked"
-                        Pressed="SortOrderButton_Pressed"
                         SemanticProperties.Hint="Toggle sort order ascending/descending"
                         Grid.Column="0">
 
@@ -98,7 +97,6 @@
 
                 <Button Text="📜 History"
                         Clicked="HistoryButton_Clicked"
-                        Pressed="HistoryButton_Pressed"
                         SemanticProperties.Hint="View your movie history"
                         Grid.Column="4">
 
@@ -111,7 +109,6 @@
 
                 <Button Text="📊 View Statistics"
                         Clicked="StatisticsButton_Clicked"
-                        Pressed="StatisticsButton_Pressed"
                         SemanticProperties.Hint="View movie statistics"
                         Grid.Column="5"
                         HorizontalOptions="Center">
@@ -173,7 +170,6 @@
                                                 VerticalOptions="Center"
                                                 HorizontalOptions="End"
                                                 Grid.Column="2"
-                                                Pressed="FavoriteButton_Pressed"
                                                 SemanticProperties.Hint="Mark this movie as favorite">
 
                                             <Button.GestureRecognizers>
