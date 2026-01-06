@@ -112,5 +112,17 @@ namespace MyProject
             viewModel.ApplySearch(searchText, directorText);
         }
 
+        private async void MovieFrame_Tapped(object sender, EventArgs e)
+        {
+            if (sender is Frame frame && frame.BindingContext is Movie movie)
+            {
+                var parameters = new Dictionary<string, object>
+                {
+                    { "Movie", movie }
+                };
+                await Shell.Current.GoToAsync(nameof(MovieDetailPage), parameters);
+            }
+        }
+
     }
 }
