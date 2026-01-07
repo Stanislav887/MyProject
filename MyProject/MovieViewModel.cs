@@ -248,6 +248,9 @@ namespace MyProject
 
                 FilteredMovies = new ObservableCollection<Movie>(AllMovies);
 
+                // Update top movies
+                UpdateTopMovies();
+
                 // Apply persisted sort
                 SortMovies(CurrentSortOption);
 
