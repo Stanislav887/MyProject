@@ -115,6 +115,15 @@
                                        Background="{DynamicResource CardBackgroundBrush}" 
                                        HasShadow="True"
                                        WidthRequest="130">
+
+                                    <!-- Make Top 10 item tappable -->
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Tapped="MovieFrame_Tapped"
+                                            NumberOfTapsRequired="1" />
+                                    </Frame.GestureRecognizers>
+
+                                    <!-- Frame content -->
                                     <StackLayout>
                                         <Label Text="{Binding emoji}" FontSize="40" HorizontalOptions="Center"/>
                                         <Label Text="{Binding title}" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" LineBreakMode="TailTruncation"/>
@@ -129,7 +138,7 @@
                 </StackLayout>
             </CollectionView.Header>
 
-            <!-- ITEM TEMPLATE: main movie list -->
+            <!-- Main movie list -->
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame CornerRadius="12" Padding="10" HasShadow="True" Background="{DynamicResource CardBackgroundBrush}">
