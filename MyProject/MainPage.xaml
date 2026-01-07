@@ -84,6 +84,54 @@
             </StackLayout>
         </ScrollView>
 
+        <!-- TOP 10 MOVIES HEADER -->
+        <Label Text="🔥 Top 10 Movies" 
+               FontSize="20" 
+               FontAttributes="Bold"
+               HorizontalOptions="Start" 
+               Margin="10,0,0,5"/>
+
+        <!-- TOP 10 MOVIES COLLECTIONVIEW -->
+        <CollectionView ItemsSource="{Binding TopMovies}" 
+                        HeightRequest="180"
+                        HorizontalScrollBarVisibility="Never"
+                        Margin="10,0,0,10">
+            <!-- Horizontal layout with spacing -->
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="15"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" CornerRadius="12"
+                           Background="{DynamicResource CardBackgroundBrush}" 
+                           HasShadow="True"
+                           WidthRequest="130">
+                        <StackLayout>
+                            <!-- Emoji for movie genre -->
+                            <Label Text="{Binding emoji}" 
+                                   FontSize="40" 
+                                   HorizontalOptions="Center"/>
+                            <!-- Movie title -->
+                            <Label Text="{Binding title}" 
+                                   FontSize="14" 
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="Center"
+                                   LineBreakMode="TailTruncation"/>
+                            <!-- Movie rating -->
+                            <Label Text="{Binding rating, StringFormat='⭐ {0:F1}'}" 
+                                   FontSize="12"
+                                   HorizontalOptions="Center"/>
+                            <!-- Movie year -->
+                            <Label Text="{Binding year}" 
+                                   FontSize="12" 
+                                   HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
         <Grid VerticalOptions="FillAndExpand">
         <!-- Movie List -->
         <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshMoviesCommand}">
