@@ -10,6 +10,8 @@ namespace MyProject
         // Expose the shared ViewModel
         public MovieViewModel ViewModel { get; set; }
 
+        // Property bound to the MovieDetailPage
+        // Setting this updates the BindingContext so the UI displays the correct movie
         public Movie Movie
         {
             get => _movie;
@@ -33,10 +35,12 @@ namespace MyProject
             ViewModel = MovieViewModel.Shared;
         }
 
+        // Called when the Favorite (star) button is clicked
         private async void FavoriteButton_Clicked(object sender, EventArgs e)
         {
             if (Movie != null)
             {
+                // Toggle favorite status using the ViewModel
                 await ViewModel.ToggleFavorite(Movie);
             }
         }

@@ -10,37 +10,68 @@ namespace MyProject
 {
     public class MovieViewModel : INotifyPropertyChanged
     {
+        // File names for caching movies, favorites, and history
         private string cacheFileName = "movies.json";
-        private Movie _selectedMovie;
-        private bool _showFavoritesOnly;
         private string favoritesFileName = "favorites.json";
         private string historyFileName = "history.json";
-        
-        // New per-user filenames
+
+        // Per-user file paths (appends username)
         private string FavoritesFileName => $"{CurrentUser}_favorites.json";
         private string HistoryFileName => $"{CurrentUser}_history.json";
 
+        // Backing field for the currently selected movie
+        private Movie _selectedMovie;
+
+        // Backing field for the "favorites only" toggle
+        private bool _showFavoritesOnly;
+
+        // All movies loaded from JSON 
         private List<Movie> AllMovies = new();
 
+        // Raw history list
         private List<MovieHistoryEntry> History = new();
+        
+        // Filtered list of movies (bound to CollectionView)
         public ObservableCollection<Movie> FilteredMovies { get; set; } = new();
+
+        // Singleton instance for easy shared access across pages
         public static MovieViewModel Shared { get; } = new MovieViewModel();
+
+        // Stats collections for UI
         public ObservableCollection<GenreStat> GenreStats { get; } = new();
         public ObservableCollection<MovieHistoryEntry> HistoryObservable { get; private set; } = new ObservableCollection<MovieHistoryEntry>();
         public ObservableCollection<HistoryGroup> GroupedHistory { get; private set; }= new ObservableCollection<HistoryGroup>();
+
+        // Top 10 movies collection
         private ObservableCollection<Movie> topMovies = new();
+        public ObservableCollection<Movie> TopMovies
+        {
+            get => topMovies;
+            set
+            {
+                if (topMovies != value)
+                {
+                    topMovies = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        // Current sort option ("Rating", "Year", "Title")
         public string CurrentSortOption { get; set; }
+
+        // Whether sorting is ascending or descending
         public bool SortAscending { get; set; }
+
+        // Currently logged-in user
         public string CurrentUser { get; set; }
 
+        // Simple UI helpers
         public bool HasMovies => FilteredMovies?.Any() == true;
+        public bool HasFavorites => FilteredMovies?.Any(m => m.IsFavorite) == true;
+        public bool HasHistory => HistoryObservable?.Any() == true;
 
-        public bool HasFavorites =>
-            FilteredMovies?.Any(m => m.IsFavorite) == true;
-
-        public bool HasHistory =>
-            HistoryObservable?.Any() == true;
-
+        // Aggregated stats
         public int TotalFavorites => FilteredMoviesByTimeRange().Count(m => m.IsFavorite);
 
         public string MostWatchedGenre =>
@@ -61,8 +92,10 @@ namespace MyProject
                 .Select(g => g.Key)
                 .FirstOrDefault() ?? "N/A";
 
-
+        // Pull-to-refresh command for UI
         public Command RefreshMoviesCommand { get; }
+
+        // UI greeting message
         public string UserTitle => string.IsNullOrWhiteSpace(CurrentUser)
                            ? "Movies"
                            : $"{CurrentUser}'s Movies";
@@ -77,6 +110,8 @@ namespace MyProject
                 {
                     selectedTimeRange = value;
                     OnPropertyChanged();
+
+                    // Update dependent stats
                     OnPropertyChanged(nameof(TotalFavorites));
                     OnPropertyChanged(nameof(MostWatchedGenre));
                     OnPropertyChanged(nameof(AverageRating));
@@ -85,6 +120,7 @@ namespace MyProject
             }
         }
 
+        // Filter movies according to selected time range
         private IEnumerable<Movie> FilteredMoviesByTimeRange()
         {
             DateTime now = DateTime.Now;
@@ -97,6 +133,7 @@ namespace MyProject
             };
         }
 
+        // Pull-to-refresh state
         private bool _isRefreshing;
         public bool IsRefreshing
         {
@@ -108,19 +145,7 @@ namespace MyProject
             }
         }
 
-        public ObservableCollection<Movie> TopMovies
-        {
-            get => topMovies;
-            set
-            {
-                if (topMovies != value)
-                {
-                    topMovies = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
+        // Emoji shown for the current user
         public string UserEmoji
         {
             get => Preferences.Default.Get("UserEmoji", "🎬");
@@ -131,16 +156,16 @@ namespace MyProject
             }
         }
 
-        // GreetingMessage here
-        public string GreetingMessage =>
-            $"Hello, {Preferences.Default.Get("UserName", CurrentUser)}!";
+        // Greeting message for the user
+        public string GreetingMessage => $"Hello, {Preferences.Default.Get("UserName", CurrentUser)}!";
 
-
+        // Sort order button text
         public string SortOrderText
         {
             get => SortAscending ? "🔼 Ascending" : "🔽 Descending";
         }
 
+        // Favorites-only toggle
         public bool ShowFavoritesOnly
         {
             get => _showFavoritesOnly;
@@ -155,7 +180,7 @@ namespace MyProject
             }
         }
 
-
+        // Currently selected movie
         public Movie SelectedMovie
         {
             get => _selectedMovie;
@@ -171,6 +196,7 @@ namespace MyProject
 
         public MovieViewModel()
         {
+            // Load current user and preferences
             CurrentUser = Preferences.Default.Get("UserName", "defaultUser");
             CurrentSortOption = Preferences.Default.Get("SortOption", "Rating");
             SortAscending = Preferences.Default.Get("SortAscending", false);
@@ -194,6 +220,7 @@ namespace MyProject
             _ = LoadHistoryAsync();
         }
 
+        // Notify UI that username has changed
         public void NotifyUsernameChanged()
         {
             CurrentUser = Preferences.Default.Get("UserName", "Guest");
@@ -207,6 +234,7 @@ namespace MyProject
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
+        // Load movies from local cache or online JSON
         private async Task LoadMoviesAsync()
         {
             string json = string.Empty;
@@ -266,6 +294,7 @@ namespace MyProject
 
         }
 
+        // Load favorites from file
         private async Task LoadFavoritesAsync()
         {
             string path = Path.Combine(FileSystem.AppDataDirectory, FavoritesFileName);
@@ -286,6 +315,7 @@ namespace MyProject
             }
         }
 
+        // Load history from file
         private async Task LoadHistoryAsync()
         {
             string path = Path.Combine(FileSystem.AppDataDirectory, HistoryFileName);
@@ -309,6 +339,7 @@ namespace MyProject
             }
         }
 
+        // Save history to file
         private async Task SaveHistoryAsync()
         {
             try
@@ -323,6 +354,7 @@ namespace MyProject
             }
         }
 
+        // Add a new history entry
         private async Task AddHistoryEntryAsync(Movie movie, string action)
         {
             var entry = new MovieHistoryEntry
@@ -346,6 +378,7 @@ namespace MyProject
             await SaveHistoryAsync();
         }
 
+        // Filter movies by search text and director
         public void ApplySearch(string searchText, string directorFilter = "")
         {
             IEnumerable<Movie> query = AllMovies;
@@ -384,6 +417,7 @@ namespace MyProject
             OnPropertyChanged(nameof(HasFavorites));
         }
 
+        // Sort movies
         public void SortMovies(string sortOption)
         {
             CurrentSortOption = sortOption;
@@ -419,6 +453,7 @@ namespace MyProject
             OnPropertyChanged(nameof(HasFavorites));
         }
 
+        // Toggle ascending/descending
         public void ToggleSortOrder()
         {
             SortAscending = !SortAscending;
@@ -429,6 +464,7 @@ namespace MyProject
             SortMovies(CurrentSortOption);
         }
 
+        // Toggle favorite for a movie
         public async Task ToggleFavorite(Movie movie)
         {
             movie.IsFavorite = !movie.IsFavorite;
@@ -462,6 +498,7 @@ namespace MyProject
             await AddHistoryEntryAsync(movie, "Unfavorited");
         }
 
+        // Clear history
         public async Task ClearHistoryAsync()
         {
             History.Clear();
@@ -472,6 +509,7 @@ namespace MyProject
             OnPropertyChanged(nameof(HasHistory));
         }
 
+        // Save favorite movies to file
         private async Task SaveFavoritesAsync()
         {
             try
@@ -489,6 +527,7 @@ namespace MyProject
             }
         }
 
+        // Group history by day for UI
         private void BuildGroupedHistory()
         {
             GroupedHistory.Clear();
@@ -513,6 +552,7 @@ namespace MyProject
             }
         }
 
+        // Build genre stats for emoji chart
         private void BuildGenreStats()
         {
             GenreStats.Clear();
@@ -536,6 +576,7 @@ namespace MyProject
             }
         }
 
+        // Update top 10 movies by rating
         public void UpdateTopMovies()
         {
             if (AllMovies == null || !AllMovies.Any())

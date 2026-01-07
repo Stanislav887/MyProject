@@ -4,6 +4,7 @@ namespace MyProject;
 
 public partial class SettingsPage : ContentPage
 {
+    // Expose the current username for binding in XAML
     public string UserName =>
         Preferences.Default.Get("UserName", "Not set");
 
@@ -11,6 +12,7 @@ public partial class SettingsPage : ContentPage
 	{
 		InitializeComponent();
 
+        // Set the page's BindingContext to the shared MovieViewModel
         BindingContext = MovieViewModel.Shared;
 
         // Load saved theme from Preferences
@@ -21,15 +23,21 @@ public partial class SettingsPage : ContentPage
         AnimationsSwitch.IsToggled = Preferences.Default.Get("AnimationsEnabled", true);
     }
 
+    // Event handler for the animations toggle switch
     private void AnimationsSwitch_Toggled(object sender, ToggledEventArgs e)
     {
         bool enabled = e.Value;
+
+        // Save user preference for animations
         Preferences.Default.Set("AnimationsEnabled", enabled);
     }
 
+    // Event handler when user changes the app theme from Picker
     private void ThemePicker_SelectedIndexChanged(object sender, EventArgs e)
     {
         string selected = ThemePicker.SelectedItem.ToString();
+
+        // Save the selected theme to Preferences
         Preferences.Default.Set("AppTheme", selected);
 
         // Apply theme immediately
@@ -47,8 +55,10 @@ public partial class SettingsPage : ContentPage
         }
     }
 
+    // Clears the user's movie history
     private async void ClearHistory_Clicked(object sender, EventArgs e)
     {
+        // Confirm with user before clearing
         bool confirm = await DisplayAlert(
             "Clear History",
             "Are you sure you want to clear your movie history?",
@@ -58,14 +68,17 @@ public partial class SettingsPage : ContentPage
         if (!confirm)
             return;
 
+        // Call ViewModel to clear history
         await MovieViewModel.Shared.ClearHistoryAsync();
 
+        // Notify user that history is cleared
         await DisplayAlert(
             "History Cleared",
             "Your movie history has been cleared.",
             "OK");
     }
 
+    // Resets the username by removing it from Preferences
     private async void ResetUsername_Clicked(object sender, EventArgs e)
     {
         bool confirm = await DisplayAlert(
@@ -77,6 +90,7 @@ public partial class SettingsPage : ContentPage
         if (!confirm)
             return;
 
+        // Remove saved username
         Preferences.Default.Remove("UserName");
 
         await DisplayAlert(
@@ -85,13 +99,15 @@ public partial class SettingsPage : ContentPage
             "OK");
     }
 
-
+    // Allows user to change their username with validation
     private async void ChangeUsername_Clicked(object sender, EventArgs e)
     {
+        // Prompt user to enter new username
         string result = await DisplayPromptAsync(
             "Change Username",
             "Enter new username:");
 
+        // Cannot be empty
         if (string.IsNullOrWhiteSpace(result))
         {
             await DisplayAlert("Invalid Username", "Username cannot be empty.", "OK");
@@ -123,11 +139,14 @@ public partial class SettingsPage : ContentPage
 
     }
 
+    // Updates the user's avatar when a new one is selected from Picker
     private void AvatarPicker_SelectedIndexChanged(object sender, EventArgs e)
     {
+        // Ignore if nothing is selected
         if (AvatarPicker.SelectedIndex == -1)
             return;
 
+        // Get the selected emoji
         string selectedEmoji = AvatarPicker.Items[AvatarPicker.SelectedIndex];
         
         // Update ViewModel 

@@ -2,14 +2,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyProject.HistoryPage">
 
+    <!-- Main Grid container with padding and spacing between rows -->
     <Grid Padding="20" RowSpacing="10">
         <Grid.RowDefinitions>
+            <!-- Row 0: Page Title -->
             <RowDefinition Height="Auto"/>
+            <!-- Row 1: Genre Chart title -->
             <RowDefinition Height="Auto"/>
+            <!-- Row 2: Genre Chart collection -->
             <RowDefinition Height="Auto"/>
+            <!-- Row 3: History list -->
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <!-- Page Title -->
         <Label Text="📜 Your Movie History" 
                FontSize="24" 
                FontAttributes="Bold"

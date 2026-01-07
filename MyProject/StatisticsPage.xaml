@@ -5,13 +5,18 @@
              x:Class="MyProject.StatisticsPage"
              Padding="10">
 
+    <!-- Set the BindingContext to the MovieViewModel -->
     <ContentPage.BindingContext>
         <vm:MovieViewModel />
     </ContentPage.BindingContext>
 
+    <!-- Main vertical layout for the page -->
     <StackLayout Spacing="20">
+
+        <!-- Page header -->
         <Label Text="📊 Movie Statistics" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center"/>
 
+        <!-- Picker to choose time range for stats -->
         <Picker x:Name="StatsTimeRangePicker"
                 Title="Select Time Range"
                 SelectedIndexChanged="StatsTimeRangePicker_SelectedIndexChanged"
@@ -26,20 +31,23 @@
             </Picker.ItemsSource>
         </Picker>
 
-        <Frame  Background="{DynamicResource SectionBackgroundBrush}" Padding="10" HasShadow="True">
+        <!-- Total Favorites Section -->
+        <Frame Background="{DynamicResource SectionBackgroundBrush}" Padding="10" HasShadow="True">
             <StackLayout>
                 <Label Text="❤️ Total Favorites:" FontAttributes="Bold"/>
                 <Label Text="{Binding TotalFavorites}" FontSize="18"/>
             </StackLayout>
         </Frame>
 
-        <Frame  Background="{DynamicResource SectionBackgroundBrush}" Padding="10" HasShadow="True">
+        <!-- Most Watched Genre Section -->
+        <Frame Background="{DynamicResource SectionBackgroundBrush}" Padding="10" HasShadow="True">
             <StackLayout>
                 <Label Text="🎬 Most Watched Genre:" FontAttributes="Bold"/>
                 <Label Text="{Binding MostWatchedGenre}" FontSize="18"/>
             </StackLayout>
         </Frame>
 
+        <!-- Average Rating Section -->
         <Frame Padding="10" HasShadow="True" Background="{DynamicResource SectionBackgroundBrush}">
             <StackLayout>
                 <Label Text="⭐ Average Rating:" FontAttributes="Bold"/>
@@ -47,6 +55,7 @@
             </StackLayout>
         </Frame>
 
+        <!-- Top Director Section -->
         <Frame Padding="10" HasShadow="True" Background="{DynamicResource SectionBackgroundBrush}">
             <StackLayout>
                 <Label Text="🎥 Top Director:" FontAttributes="Bold"/>
