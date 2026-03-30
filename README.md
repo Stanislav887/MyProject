@@ -66,7 +66,17 @@ This project demonstrates cross-platform development, UI design, data binding, a
 
 ## 🖼️ Screenshots
 
+### 🎬 Main Page
+![Main Page](screenshots/main.png)
 
+### ⚙️ Settings
+![Settings](screenshots/settings.png)
+
+### 📜 History
+![History](screenshots/history.png)
+
+### 📊 Statistics
+![Statistics](screenshots/statistics.png)
 
 ---
 
