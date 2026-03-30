@@ -27,21 +27,34 @@ This project demonstrates cross-platform development, UI design, data binding, a
 
 * Visual Studio 2022 or later
 * .NET 9.0 SDK
-* MAUI workload installed
+* MAUI workload installed (via Visual Studio Installer)
 
 ### Steps
 
 1. Clone the repository:
 
    ```
-   git clone https://github.com/Stanislav887/MyProject.git
+   git clone https://github.com/Stanislav887/MyProject
    ```
-2. Open the `.sln` file in Visual Studio
-3. Build the project
-4. Run on:
+2. Open Visual Studio 2022
 
-   * Windows
-   * Android emulator or device
+3. Click **Open a project or solution**
+
+4. Select the file **MyProject.sln**
+
+5. Wait for dependencies to restore automatically
+
+6. Click **Start (▶)** to run the app
+
+### Running Options
+
+* Windows Machine (recommended)
+* Android Emulator or device (if configured)
+
+### First Launch
+
+* Enter your name when prompted
+* Movie data is downloaded and cached locally
 
 ---
 
