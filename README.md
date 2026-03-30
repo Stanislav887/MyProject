@@ -80,6 +80,43 @@ This project demonstrates cross-platform development, UI design, data binding, a
 
 ---
 
+## 🤖 AI Acknowledgment
+
+## AI Tools Used
+
+* ChatGPT (OpenAI)
+
+---
+
+## How AI Was Used
+
+AI tools were used to assist in the development of this project in the following ways:
+
+* Debugging issues in C# and .NET MAUI code
+* Understanding concepts such as data binding and MVVM structure
+* Improving UI layout and structure in XAML
+
+---
+
+## Specific Examples
+
+* ChatGPT helped debug issues related to:
+
+  * Data binding not updating UI correctly
+  * JSON loading and deserialization errors
+  * Navigation between pages in .NET MAUI
+
+* Assistance was provided in improving:
+
+  * Search and filtering logic using LINQ
+  * Structure of the ViewModel (MovieViewModel)
+  * Implementation of history tracking and grouping
+
+* ChatGPT also helped:
+
+  * Refactor parts of the code for better readability
+  * Suggest improvements for UI/UX features such as filtering, sorting, and statistics
+
 ## 👤 Author
 
 Stanislav Yunakov
